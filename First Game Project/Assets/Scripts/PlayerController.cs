@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public float forwardInput;
     public float horizontalInput;
     public float speed = 75.0f;
+    //Variables for monster knock back power
+    public float tankMonsterPower = 2000.0f;
     //Player rigidbody variable 
     private Rigidbody playerRb;
 
@@ -44,5 +46,14 @@ public class PlayerController : MonoBehaviour
             playerRb.freezeRotation = true;
         }
        
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Vector3 awayFromMonster = (transform.position - collision.gameObject.transform.position);
+        if (collision.gameObject.CompareTag("Tank Monster"))
+        {
+            playerRb.AddForce(awayFromMonster * tankMonsterPower, ForceMode.Impulse);
+        }
     }
 }
