@@ -38,6 +38,9 @@ public class PlayerController : MonoBehaviour
         if(horizontalInput != 0 || forwardInput != 0)
         {
             transform.rotation = Quaternion.LookRotation(movement);
+        } else if (horizontalInput == 0 && forwardInput ==0)
+        {
+            playerRb.freezeRotation = true;
         }
        
     }
