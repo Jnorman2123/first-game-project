@@ -36,8 +36,10 @@ public class EnemyController : MonoBehaviour
         {
             enemySpeed = 75.0f;
         }
-            //Create enemy movement vector3 for direction
-            Vector3 enemyMovement = (player.transform.position - transform.position).normalized;
+        //Create enemy movement vector3 for direction
+        Vector3 enemyMovement = (player.transform.position - transform.position).normalized;
         enemyRb.AddForce(enemyMovement * enemySpeed * Time.deltaTime, ForceMode.Impulse);
+        //Make enemy face the way they are moving
+        transform.rotation = Quaternion.LookRotation(enemyMovement);
     }
 }
