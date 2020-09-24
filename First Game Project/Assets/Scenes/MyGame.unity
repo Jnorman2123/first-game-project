@@ -429,7 +429,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 976398204}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 2f77f351418f7314091c494663cc0524, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -511,6 +511,9 @@ MonoBehaviour:
   forwardInput: 0
   horizontalInput: 0
   speed: 5000
+  tankMonsterPower: 2000
+  monsterPower: 1000
+  fastMonsterPower: 500
 --- !u!54 &976398210
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -929,17 +932,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 618428898, guid: 5ccdc77c60252af43afb2cb4115ca319, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
-    - target: {fileID: 618428898, guid: 5ccdc77c60252af43afb2cb4115ca319, type: 3}
-      propertyPath: m_Drag
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 618428898, guid: 5ccdc77c60252af43afb2cb4115ca319, type: 3}
-      propertyPath: m_Mass
-      value: 75
+    - target: {fileID: 1736375939005029762, guid: 5ccdc77c60252af43afb2cb4115ca319,
+        type: 3}
+      propertyPath: enemySpeed
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 2219729259302827525, guid: 5ccdc77c60252af43afb2cb4115ca319,
         type: 3}
@@ -1168,18 +1164,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 333923576, guid: e9f557ffc5f70ee4d957fe0ffa9cd224, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
-    - target: {fileID: 333923576, guid: e9f557ffc5f70ee4d957fe0ffa9cd224, type: 3}
-      propertyPath: m_Drag
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 333923576, guid: e9f557ffc5f70ee4d957fe0ffa9cd224, type: 3}
-      propertyPath: m_Mass
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 4081063058941611026, guid: e9f557ffc5f70ee4d957fe0ffa9cd224,
         type: 3}
       propertyPath: m_Name
@@ -1239,6 +1223,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5554865341283086656, guid: e9f557ffc5f70ee4d957fe0ffa9cd224,
+        type: 3}
+      propertyPath: enemySpeed
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9f557ffc5f70ee4d957fe0ffa9cd224, type: 3}
@@ -1328,17 +1317,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 878101840, guid: 5950d9b1edf06a4479c9a06130a70f32, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
-    - target: {fileID: 878101840, guid: 5950d9b1edf06a4479c9a06130a70f32, type: 3}
-      propertyPath: m_Drag
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 878101840, guid: 5950d9b1edf06a4479c9a06130a70f32, type: 3}
-      propertyPath: m_Mass
-      value: 25
+    - target: {fileID: 5349346793980386837, guid: 5950d9b1edf06a4479c9a06130a70f32,
+        type: 3}
+      propertyPath: enemySpeed
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 6430753357680938611, guid: 5950d9b1edf06a4479c9a06130a70f32,
         type: 3}
