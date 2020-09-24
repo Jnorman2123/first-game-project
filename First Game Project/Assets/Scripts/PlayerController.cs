@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public float speed = 75.0f;
     //Variables for monster knock back power
     public float tankMonsterPower = 2000.0f;
+    public float monsterPower = 1000.0f;
+    public float fastMonsterPower = 500.0f;
     //Player rigidbody variable 
     private Rigidbody playerRb;
 
@@ -54,6 +56,12 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Tank Monster"))
         {
             KnockAway(collision.gameObject, tankMonsterPower);
+        } else if (collision.gameObject.CompareTag("Regular Monster"))
+        {
+            KnockAway(collision.gameObject, monsterPower);
+        } else if (collision.gameObject.CompareTag("Fast Monster"))
+        {
+            KnockAway(collision.gameObject, fastMonsterPower);
         }
     }
 
