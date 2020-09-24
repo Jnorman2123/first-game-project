@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     //Variables for character movement
     public float forwardInput;
     public float horizontalInput;
-    public float speed = 10.0f;
+    public float speed = 25.0f;
     //Player rigidbody variable 
     private Rigidbody playerRb;
 
@@ -32,11 +32,13 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         //Set movement variable to the player inputs
         Vector3 movement = new Vector3(horizontalInput, 0.0f, forwardInput); 
-
-        transform.Translate(movement * speed * Time.deltaTime, Space.World);
-
-        //Move character forward 
-        
-        //transform.Translate(Vector3.forward * forwardInput * speed * Time.deltaTime);
+        //Move character in direction of input
+        playerRb.AddForce(movement * speed * Time.deltaTime, ForceMode.Impulse);
+        //Make character automatically face the direction it is moving
+        if(horizontalInput != 0 || forwardInput != 0)
+        {
+            transform.rotation = Quaternion.LookRotation(movement);
+        }
+       
     }
 }
