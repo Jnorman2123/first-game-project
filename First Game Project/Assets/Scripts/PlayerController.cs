@@ -49,10 +49,10 @@ public class PlayerController : MonoBehaviour
         }
        
     }
-
+    //When player collides with monster the monster will knock the player away
     private void OnCollisionEnter(Collision collision)
     {
-        
+        //For each type of monster call KnockAway function with correct knock back power
         if (collision.gameObject.CompareTag("Tank Monster"))
         {
             KnockAway(collision.gameObject, tankMonsterPower);
@@ -64,10 +64,17 @@ public class PlayerController : MonoBehaviour
             KnockAway(collision.gameObject, fastMonsterPower);
         }
     }
-
+    //Method to determine knock back power based on monster type
     void KnockAway(GameObject collision, float monsterPower)
     {
+        //Knock the player away from the monster
         Vector3 awayFromMonster = (transform.position - collision.gameObject.transform.position);
         playerRb.AddForce(awayFromMonster * monsterPower, ForceMode.Impulse);
+    }
+    //Destroy power up when the player collides with it
+    private void OnTriggerEnter(Collider other)
+    {
+        //Destroy the pick up object
+        Destroy(other.gameObject);
     }
 }
