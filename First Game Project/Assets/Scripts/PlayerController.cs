@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Set playerRb to player rigidbody component
         playerRb = GetComponent<Rigidbody>();
     }
 
@@ -34,7 +35,7 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(horizontalInput, 0.0f, forwardInput); 
         //Move character in direction of input
         playerRb.AddForce(movement * speed * Time.deltaTime, ForceMode.Impulse);
-        //Make character automatically face the direction it is moving
+        //Make character automatically face the direction it is moving, lock rotation if no input
         if(horizontalInput != 0 || forwardInput != 0)
         {
             transform.rotation = Quaternion.LookRotation(movement);
