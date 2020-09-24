@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Tank Monster
+  - Regular Monster
+  - Fast Monster
+  - Health Potion
+  - Damage Boost
+  - Speed Boost
   layers:
   - Default
   - TransparentFX

@@ -28,8 +28,16 @@ public class EnemyController : MonoBehaviour
     //Create function to move enemies 
     void MoveEnemy()
     {
-        //Create enemy movement vector3 for direction
-        Vector3 enemyMovement = (player.transform.position - transform.position).normalized;
+        //Set speed modifiers for different enemy types
+        if (gameObject.CompareTag("Tank Monster"))
+        {
+            enemySpeed = 25.0f;
+        } else if (gameObject.CompareTag("Fast Monster"))
+        {
+            enemySpeed = 75.0f;
+        }
+            //Create enemy movement vector3 for direction
+            Vector3 enemyMovement = (player.transform.position - transform.position).normalized;
         enemyRb.AddForce(enemyMovement * enemySpeed * Time.deltaTime, ForceMode.Impulse);
     }
 }
