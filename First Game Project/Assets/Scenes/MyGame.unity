@@ -510,7 +510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardInput: 0
   horizontalInput: 0
-  speed: 75
+  speed: 5000
 --- !u!54 &976398210
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -519,7 +519,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 976398204}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 50
   m_Drag: 10
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -937,6 +937,10 @@ PrefabInstance:
       propertyPath: m_Drag
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 618428898, guid: 5ccdc77c60252af43afb2cb4115ca319, type: 3}
+      propertyPath: m_Mass
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 2219729259302827525, guid: 5ccdc77c60252af43afb2cb4115ca319,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1172,6 +1176,10 @@ PrefabInstance:
       propertyPath: m_Drag
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 333923576, guid: e9f557ffc5f70ee4d957fe0ffa9cd224, type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 4081063058941611026, guid: e9f557ffc5f70ee4d957fe0ffa9cd224,
         type: 3}
       propertyPath: m_Name
@@ -1327,6 +1335,10 @@ PrefabInstance:
     - target: {fileID: 878101840, guid: 5950d9b1edf06a4479c9a06130a70f32, type: 3}
       propertyPath: m_Drag
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 878101840, guid: 5950d9b1edf06a4479c9a06130a70f32, type: 3}
+      propertyPath: m_Mass
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6430753357680938611, guid: 5950d9b1edf06a4479c9a06130a70f32,
         type: 3}
