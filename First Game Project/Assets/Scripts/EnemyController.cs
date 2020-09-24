@@ -15,18 +15,21 @@ public class EnemyController : MonoBehaviour
     {
         //Set enemyRb to enemy rigidbody
         enemyRb = GetComponent<Rigidbody>();
+        //player to player game object
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
     void Update()
-    {   
+    {
+        MoveEnemy();
     }
 
     //Create function to move enemies 
     void MoveEnemy()
     {
         //Create enemy movement vector3 for direction
-        Vector3 enemyMovement = player.transform.position - transform.position;
-        enemyRb.AddForce(enemyMovement * enemySpeed * Time.deltaTime);
+        Vector3 enemyMovement = (player.transform.position - transform.position).normalized;
+        enemyRb.AddForce(enemyMovement * enemySpeed * Time.deltaTime, ForceMode.Impulse);
     }
 }
