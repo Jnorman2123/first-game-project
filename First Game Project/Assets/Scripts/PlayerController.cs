@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     //Variables for character movement
     public float forwardInput;
     public float horizontalInput;
-    public float speed = 25.0f;
+    public float speed = 75.0f;
     //Player rigidbody variable 
     private Rigidbody playerRb;
 
