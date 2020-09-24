@@ -50,10 +50,16 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Vector3 awayFromMonster = (transform.position - collision.gameObject.transform.position);
+        
         if (collision.gameObject.CompareTag("Tank Monster"))
         {
-            playerRb.AddForce(awayFromMonster * tankMonsterPower, ForceMode.Impulse);
+            KnockAway(collision.gameObject, tankMonsterPower);
         }
+    }
+
+    void KnockAway(GameObject collision, float monsterPower)
+    {
+        Vector3 awayFromMonster = (transform.position - collision.gameObject.transform.position);
+        playerRb.AddForce(awayFromMonster * monsterPower, ForceMode.Impulse);
     }
 }
