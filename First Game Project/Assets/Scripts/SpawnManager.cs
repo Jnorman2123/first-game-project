@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    //Variables for enemy prefabs
+    //Variables for enemy prefabs, weapon, and player
     public GameObject[] enemyPrefabs;
+    public GameObject weapon;
+    private GameObject player;
     //Variable for random spawn location
     private Vector3 spawnPos;
     //Variables for spawn ranges
@@ -14,17 +16,21 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
         spawnMonster(0);
         spawnMonster(1);
-        spawnMonster(2);
-        
-       
+        spawnMonster(2); 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Vector3 WeaponPos = player.transform.position + new Vector3(0, 0, 0.8f);
+        if (Input.GetKeyDown(KeyCode.Space))
+        { 
+            Debug.Log("shoot weapon");
+            Instantiate(weapon, WeaponPos, weapon.transform.rotation);
+        }
     }
     //Function to spawn a monster and a random location
     private void spawnMonster(int monsterIndex)
@@ -36,7 +42,7 @@ public class SpawnManager : MonoBehaviour
             yPos = 0.5f;
         } else if (monsterIndex == 1)
         {
-            yPos = 0.25f;
+            yPos = 0.375f;
         } else if (monsterIndex == 2)
         {
             yPos = 1.0f;
