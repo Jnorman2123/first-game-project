@@ -29,8 +29,20 @@ public class SpawnManager : MonoBehaviour
     //Function to spawn a monster and a random location
     private void spawnMonster(int monsterIndex)
     {
+        //Set y spawn pos based on monster size 
+        float yPos = 0;
+        if (monsterIndex == 0)
+        {
+            yPos = 0.5f;
+        } else if (monsterIndex == 1)
+        {
+            yPos = 0.25f;
+        } else if (monsterIndex == 2)
+        {
+            yPos = 1.0f;
+        }
         //Set spawn pos for enemies to random location
-        spawnPos = new Vector3(Random.Range(xRange, -xRange), 0.5f, Random.Range(zRange, -zRange));
+        spawnPos = new Vector3(Random.Range(xRange, -xRange), yPos, Random.Range(zRange, -zRange));
         //Spawn enemy of given index
         Instantiate(enemyPrefabs[monsterIndex], spawnPos, enemyPrefabs[monsterIndex].transform.rotation);
     }
