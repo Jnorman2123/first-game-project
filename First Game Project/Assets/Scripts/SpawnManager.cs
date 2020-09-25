@@ -14,15 +14,24 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Set spawn pos for enemies to random location
-        spawnPos = new Vector3(Random.Range(xRange, -xRange), 0.5f, Random.Range(zRange, -zRange));
-
-        Instantiate(enemyPrefabs[0], spawnPos, enemyPrefabs[0].transform.rotation);
+        spawnMonster(0);
+        spawnMonster(1);
+        spawnMonster(2);
+        
+       
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    //Function to spawn a monster and a random location
+    private void spawnMonster(int monsterIndex)
+    {
+        //Set spawn pos for enemies to random location
+        spawnPos = new Vector3(Random.Range(xRange, -xRange), 0.5f, Random.Range(zRange, -zRange));
+        //Spawn enemy of given index
+        Instantiate(enemyPrefabs[monsterIndex], spawnPos, enemyPrefabs[monsterIndex].transform.rotation);
     }
 }
