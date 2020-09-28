@@ -25,12 +25,12 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 WeaponPos = player.transform.position + new Vector3(0, 0, 0.8f);
-        if (Input.GetKeyDown(KeyCode.Space))
-        { 
-            Debug.Log("shoot weapon");
-            Instantiate(weapon, WeaponPos, weapon.transform.rotation);
-        }
+        //Vector3 WeaponPos = player.transform.position + new Vector3(0, 0, 1.5f);
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{ 
+           //Debug.Log("shoot weapon");
+            //Instantiate(weapon, WeaponPos, weapon.transform.rotation);
+        //}
     }
     //Function to spawn a monster and a random location
     private void spawnMonster(int monsterIndex)

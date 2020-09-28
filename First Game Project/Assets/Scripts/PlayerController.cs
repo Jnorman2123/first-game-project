@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public float fastMonsterPower = 500.0f;
     //Player rigidbody variable 
     private Rigidbody playerRb;
+    //Attacking bool variable
+    public bool attacking = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,14 @@ public class PlayerController : MonoBehaviour
     {
         //Call move player function to move player
         MovePlayer();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            attacking = true;    
+        }
+        if (attacking == true)
+        {
+            StartCoroutine("Attack");
+        }
     }
 
     //Method to move character based on user input
@@ -76,5 +86,12 @@ public class PlayerController : MonoBehaviour
     {
         //Destroy the pick up object
         Destroy(other.gameObject);
+    }
+
+    IEnumerator Attack()
+    {
+        Debug.Log("Attack");
+        yield return new WaitForSeconds(0.15f);
+        attacking = false;
     }
 }
