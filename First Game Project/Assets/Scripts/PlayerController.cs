@@ -14,8 +14,8 @@ public class PlayerController : MonoBehaviour
     public float fastMonsterPower = 500.0f;
     //Player rigidbody variable 
     private Rigidbody playerRb;
-    //Attacking bool variable
-    public bool attacking = false;
+    //Hit range variable
+    private float hitRange = 5.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -31,11 +31,7 @@ public class PlayerController : MonoBehaviour
         MovePlayer();
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            attacking = true;    
-        }
-        if (attacking == true)
-        {
-            StartCoroutine("Attack");
+            Attack();
         }
     }
 
@@ -88,10 +84,18 @@ public class PlayerController : MonoBehaviour
         Destroy(other.gameObject);
     }
 
-    IEnumerator Attack()
+    private void Attack()
     {
-        Debug.Log("Attack");
-        yield return new WaitForSeconds(0.15f);
-        attacking = false;
+        RaycastHit hit;
+        Vector3 forward = transform.TransformDirection(Vector3.forward);
+        Vector3 origin = transform.position;
+
+        if (Physics.Raycast(origin, forward, out hit, hitRange))
+        {
+            if(hit.transform.gameObject.tag == "Regular Monster" || hit.transform.gameObject.tag == "Tank Monster" || hit.transform.gameObject.tag == "Fast Monster")
+            {
+                hit.transform.gameObject.SendMessage("TakeDamage", 100);
+            }
+        }
     }
 }

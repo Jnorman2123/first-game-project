@@ -10,6 +10,8 @@ public class EnemyController : MonoBehaviour
     private GameObject player;
     //Variable for enemy rigidbody 
     private Rigidbody enemyRb;
+    //Enemy health variable
+    public int health = 100;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,5 +36,15 @@ public class EnemyController : MonoBehaviour
         enemyRb.AddForce(enemyMovement * enemySpeed * Time.deltaTime, ForceMode.Impulse);
         //Make enemy face the way they are moving
         transform.rotation = Quaternion.LookRotation(enemyMovement);
+    }
+
+    void TakeDamage(int damageAmount)
+    {
+        health -= damageAmount;
+
+        if (health < 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
