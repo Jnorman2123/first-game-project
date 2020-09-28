@@ -16,4 +16,12 @@ public class WeaponController : MonoBehaviour
     {
        
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Regular Monster") || collision.gameObject.CompareTag("Tank Monster") || collision.gameObject.CompareTag("Fast Monster"))
+        {
+            collision.gameObject.SendMessage("TakeDamage", 100);
+        }
+    }
 }

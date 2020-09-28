@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         MovePlayer();
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Attack();
+            
         }
     }
 
@@ -82,20 +82,5 @@ public class PlayerController : MonoBehaviour
     {
         //Destroy the pick up object
         Destroy(other.gameObject);
-    }
-
-    private void Attack()
-    {
-        RaycastHit hit;
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
-        Vector3 origin = transform.position;
-
-        if (Physics.Raycast(origin, forward, out hit, hitRange))
-        {
-            if(hit.transform.gameObject.tag == "Regular Monster" || hit.transform.gameObject.tag == "Tank Monster" || hit.transform.gameObject.tag == "Fast Monster")
-            {
-                hit.transform.gameObject.SendMessage("TakeDamage", 100);
-            }
-        }
     }
 }
