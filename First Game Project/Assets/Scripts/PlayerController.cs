@@ -14,8 +14,6 @@ public class PlayerController : MonoBehaviour
     public float fastMonsterPower = 500.0f;
     //Player rigidbody variable 
     private Rigidbody playerRb;
-    //Hit range variable
-    private float hitRange = 5.0f;
     //Hit box game object variable
     public GameObject hitBox;
 
@@ -29,21 +27,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Get player position vector3 and rotation
-        Vector3 playerPosition = transform.position;
-        Vector3 playerDirection = transform.forward;
-        Quaternion playerRotation = transform.rotation;
-        float spawnDistance = 1.0f;
-        //Set hit box spawn
-        Vector3 hitBoxPosition = playerPosition + playerDirection * spawnDistance;
-        //Quaternion hitBoxRotation = new Quaternion(playerRotation.x, playerRotation.y + 90, playerRotation.z, 1);
         //Call move player function to move player
         MovePlayer();
-        //Create new weapon when space bar is pressed
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Instantiate(hitBox, hitBoxPosition, playerRotation);   
-        }
+        //Call attack function to spawn a hit box
+        Attack();
     }
 
     //Method to move character based on user input
@@ -65,6 +52,22 @@ public class PlayerController : MonoBehaviour
             playerRb.freezeRotation = true;
         }
        
+    }
+    //Function to spawn a hit box when the player presses the space bar
+    private void Attack()
+    {
+        //Get player position vector3 and rotation
+        Vector3 playerPosition = transform.position;
+        Vector3 playerDirection = transform.forward;
+        Quaternion playerRotation = transform.rotation;
+        float spawnDistance = 1.0f;
+        //Set hit box spawn
+        Vector3 hitBoxPosition = playerPosition + playerDirection * spawnDistance;
+        //Create new weapon when space bar is pressed
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(hitBox, hitBoxPosition, playerRotation);
+        }
     }
     //When player collides with monster the monster will knock the player away
     private void OnCollisionEnter(Collision collision)
