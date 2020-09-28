@@ -29,8 +29,11 @@ public class PlayerController : MonoBehaviour
     {
         //Call move player function to move player
         MovePlayer();
-        //Call attack function to spawn a hit box
-        Attack();
+        //Call attack function to spawn a hit box when space bar is pressed
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine("Attack");
+        }   
     }
 
     //Method to move character based on user input
@@ -54,7 +57,7 @@ public class PlayerController : MonoBehaviour
        
     }
     //Function to spawn a hit box when the player presses the space bar
-    private void Attack()
+    private void SpawnHitBox()
     {
         //Get player position vector3 and rotation
         Vector3 playerPosition = transform.position;
@@ -63,11 +66,14 @@ public class PlayerController : MonoBehaviour
         float spawnDistance = 1.0f;
         //Set hit box spawn
         Vector3 hitBoxPosition = playerPosition + playerDirection * spawnDistance;
-        //Create new weapon when space bar is pressed
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Instantiate(hitBox, hitBoxPosition, playerRotation);
-        }
+        //Create new weapon
+        Instantiate(hitBox, hitBoxPosition, playerRotation);
+    }
+    //Function to destroy the hit box
+    private void RemoveHitBox()
+    {
+        GameObject hitBoxClone = GameObject.Find("Hit Box(Clone)");
+        Destroy(hitBoxClone);
     }
     //When player collides with monster the monster will knock the player away
     private void OnCollisionEnter(Collision collision)
@@ -96,5 +102,12 @@ public class PlayerController : MonoBehaviour
     {
         //Destroy the pick up object
         Destroy(other.gameObject);
+    }
+
+    IEnumerator Attack()
+    {
+        SpawnHitBox();
+        yield return new WaitForSeconds(0.1f);
+        RemoveHitBox();
     }
 }
