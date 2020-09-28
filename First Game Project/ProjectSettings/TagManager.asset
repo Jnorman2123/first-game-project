@@ -10,6 +10,7 @@ TagManager:
   - Health Potion
   - Damage Boost
   - Speed Boost
+  - Weapon
   layers:
   - Default
   - TransparentFX

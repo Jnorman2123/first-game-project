@@ -30,6 +30,7 @@ public class EnemyController : MonoBehaviour
     {
         //Create enemy movement vector3 for direction
         Vector3 enemyMovement = (player.transform.position - transform.position).normalized;
+        enemyMovement.y = 0;
         enemyRb.AddForce(enemyMovement * enemySpeed * Time.deltaTime, ForceMode.Impulse);
         //Make enemy face the way they are moving
         transform.rotation = Quaternion.LookRotation(enemyMovement);
