@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-
+    //Variable for attack damage
+    public float damage = 50.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,12 +17,12 @@ public class WeaponController : MonoBehaviour
     {
        
     }
-
+    //On collision with monster do damage to monster
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Regular Monster") || collision.gameObject.CompareTag("Tank Monster") || collision.gameObject.CompareTag("Fast Monster"))
         {
-            collision.gameObject.SendMessage("TakeDamage", 50);
+            collision.gameObject.SendMessage("TakeDamage", damage);
         }
     }
 }

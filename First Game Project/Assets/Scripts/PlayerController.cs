@@ -18,14 +18,18 @@ public class PlayerController : MonoBehaviour
     public float fastMonsterAttack = 12.5f;
     //Player rigidbody variable 
     private Rigidbody playerRb;
-    //Hit box game object variable
+    //Hit box game object variable and weapon controller script
     public GameObject hitBox;
+    private WeaponController weaponController;
     //Variable for player health
     public float health = 250;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        //Set weapon controller
+        weaponController = hitBox.GetComponent<WeaponController>();
         //Set playerRb to player rigidbody component
         playerRb = GetComponent<Rigidbody>();
     }
@@ -115,11 +119,15 @@ public class PlayerController : MonoBehaviour
         //If health pick up heal the player
         if (other.CompareTag("Health Potion"))
         {
+            //Heal player by 50 but dont excede initial health of 250
             health += 50;
             if (health >= 250)
             {
                 health = 250;
             }
+        } else if (other.CompareTag("Damage Boost"))
+        {
+            weaponController.damage *= 2;
         }
         //Destroy the pick up object
         Destroy(other.gameObject);

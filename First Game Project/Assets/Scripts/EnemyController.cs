@@ -19,17 +19,6 @@ public class EnemyController : MonoBehaviour
         enemyRb = GetComponent<Rigidbody>();
         //player to player game object
         player = GameObject.Find("Player");
-        //Set enemy health based on enemy type 
-        if (gameObject.name == "Fast Monster")
-        {
-            health = 50;
-        } else if (gameObject.name == "Regular Monster")
-        {
-            health = 100;
-        } else if (gameObject.name == "Tank Monster")
-        {
-            health = 200;
-        }
     }
 
     // Update is called once per frame
