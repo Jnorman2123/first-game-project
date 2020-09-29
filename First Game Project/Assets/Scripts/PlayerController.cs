@@ -112,6 +112,15 @@ public class PlayerController : MonoBehaviour
     //Destroy power up when the player collides with it
     private void OnTriggerEnter(Collider other)
     {
+        //If health pick up heal the player
+        if (other.CompareTag("Health Potion"))
+        {
+            health += 50;
+            if (health >= 250)
+            {
+                health = 250;
+            }
+        }
         //Destroy the pick up object
         Destroy(other.gameObject);
     }
