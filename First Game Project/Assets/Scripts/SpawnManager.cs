@@ -69,104 +69,39 @@ public class SpawnManager : MonoBehaviour
        switch (wave)
         {
             case 1:
-                WaveOne();
+                Wave(3, 0, 0);
                 break;
             case 2:
-                WaveTwo();
+                Wave(3, 2, 0);
                 break;
             case 3:
-                WaveThree();
+                Wave(3, 2, 2);
                 break;
             case 4:
-                WaveFour();
+                Wave(5, 2, 2);
+                break;
+            case 5:
+                Wave(5, 3, 3);
                 break;
             default:
                 break;
         }
     }
-    //Function to spawn the first wave of monsters
-    private void WaveOne()
-    {
-        //Spawn 5 regular monsters
-        for (int i = 0; i < 5; i++) {
-            spawnMonster(0);
-        }
-        //Spawn a random boost every 10 seconds after 5 second delay
-        InvokeRepeating("SpawnBoost", 5.0f, 10.0f);
-    }
-    //Function to spawn the second wave of monsters
-    private void WaveTwo()
+    //Function to spawn the wave of monsters
+    private void Wave(int iArg, int nArg, int jArg)
     {
         //Spawn 3 regular monsters
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < iArg; i++)
         {
             spawnMonster(0);
         }
         //Spawn 2 fast monsters
-        for (int n = 0; n < 2; n++)
-        {
-            spawnMonster(1);
-        }
-        //Spawn a random boost every 10 seconds after 5 second delay
-        InvokeRepeating("SpawnBoost", 5.0f, 10.0f);
-    }
-    //Function to spawn the third wave of monsters 
-    private void WaveThree()
-    {
-        //Spawn 3 regular monsters
-        for (int i = 0; i < 3; i++)
-        {
-            spawnMonster(0);
-        }
-        //Spawn 2 fast monsters
-        for (int n = 0; n < 2; n++)
+        for (int n = 0; n < nArg; n++)
         {
             spawnMonster(1);
         }
         //Spawn 2 tank monsters
-        for (int j = 0; j < 2; j++)
-        {
-            spawnMonster(2);
-        }
-        //Spawn a random boost every 10 seconds after 5 second delay
-        InvokeRepeating("SpawnBoost", 5.0f, 10.0f);
-    }
-    //Function to spawn the fourth wave of monsters 
-    private void WaveFour()
-    {
-        //Spawn 5 regular monsters
-        for (int i = 0; i < 5; i++)
-        {
-            spawnMonster(0);
-        }
-        //Spawn 2 fast monsters
-        for (int n = 0; n < 2; n++)
-        {
-            spawnMonster(1);
-        }
-        //Spawn 2 tank monsters
-        for (int j = 0; j < 2; j++)
-        {
-            spawnMonster(2);
-        }
-        //Spawn a random boost every 10 seconds after 5 second delay
-        InvokeRepeating("SpawnBoost", 5.0f, 10.0f);
-    }
-    //Function to spawn the fifth wave of monsters 
-    private void WaveFive()
-    {
-        //Spawn 5 regular monsters
-        for (int i = 0; i < 5; i++)
-        {
-            spawnMonster(0);
-        }
-        //Spawn 3 fast monsters
-        for (int n = 0; n < 2; n++)
-        {
-            spawnMonster(1);
-        }
-        //Spawn 3 tank monsters
-        for (int j = 0; j < 2; j++)
+        for (int j = 0; j < jArg; j++)
         {
             spawnMonster(2);
         }
