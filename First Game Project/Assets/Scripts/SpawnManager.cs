@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    //Variables for enemy prefabs, weapon, and player
+    //Variables for enemy prefabs, boosts, and player
     public GameObject[] enemyPrefabs;
-    public GameObject weapon;
+    public GameObject[] boosts;
     private GameObject player;
-    //Variable for random spawn location
-    private Vector3 spawnPos;
+    //Variables for random spawn location
+    private Vector3 enemySpawnPos;
+    private Vector3 boostSpawnPos;
     //Variables for spawn ranges
     private float zRange = 13.5f;
     private float xRange = 24.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,9 +48,9 @@ public class SpawnManager : MonoBehaviour
             yPos = 1.0f;
         }
         //Set spawn pos for enemies to random location
-        spawnPos = new Vector3(Random.Range(xRange, -xRange), yPos, Random.Range(zRange, -zRange));
+        enemySpawnPos = new Vector3(Random.Range(xRange, -xRange), yPos, Random.Range(zRange, -zRange));
         //Spawn enemy of given index
-        Instantiate(enemyPrefabs[monsterIndex], spawnPos, enemyPrefabs[monsterIndex].transform.rotation);
+        Instantiate(enemyPrefabs[monsterIndex], enemySpawnPos, enemyPrefabs[monsterIndex].transform.rotation);
     }
 
     private void WaveOne()
@@ -56,5 +58,14 @@ public class SpawnManager : MonoBehaviour
         for (int i = 0; i < 5; i++) {
             spawnMonster(0);
         }
+        InvokeRepeating("SpawnBoost", 5.0f, 10.0f);
+    }
+
+    private void SpawnBoost()
+    {
+        int boostIndex = Random.Range(0, boosts.Length);
+        float yPos = 0.5f;
+        boostSpawnPos = new Vector3(Random.Range(xRange, -xRange), yPos, Random.Range(zRange, -zRange));
+        Instantiate(boosts[boostIndex], boostSpawnPos, boosts[boostIndex].transform.rotation);
     }
 }
