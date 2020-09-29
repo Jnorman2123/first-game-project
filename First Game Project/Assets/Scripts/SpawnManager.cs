@@ -18,25 +18,29 @@ public class SpawnManager : MonoBehaviour
     private GameObject[] fastMonsters;
     private GameObject[] tankMonsters;
     private int allMonsters;
+    private int waveNumber;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Set waveNumber to 1 intitially
+        waveNumber = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Find all monsters and set the number
         regularMonsters = GameObject.FindGameObjectsWithTag("Regular Monster");
         fastMonsters = GameObject.FindGameObjectsWithTag("Fast Monster");
         tankMonsters = GameObject.FindGameObjectsWithTag("Tank Monster");
         allMonsters = regularMonsters.Length + fastMonsters.Length + tankMonsters.Length;
+        //If no monsters left spawn a new wave and increment the wave number
         if (allMonsters == 0)
         {
-            int waveNumber = 1;
+            CancelInvoke("SpawnBoost");
             NextWave(waveNumber);
-            waveNumber += 1;
+            waveNumber += 1; 
         }
     }
     //Function to spawn a monster and a random location
@@ -68,11 +72,13 @@ public class SpawnManager : MonoBehaviour
                 WaveOne();
                 break;
             //case 2:
-                //WaveTwo();
-                //break;
+            //WaveTwo();
+            //break;
             //case 3:
-                //WaveThree();
-                //break;
+            //WaveThree();
+            //break;
+            default:
+                break;
         }
     }
     //Function to spawn the first wave of monsters
