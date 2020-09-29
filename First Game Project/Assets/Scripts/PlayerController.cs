@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     //Variable for player health
     public float health = 250;
     //Variables for materials
+    public Material normalMaterial;
     public Material damageMaterial;
     public Material speedMaterial;
     
@@ -133,8 +134,7 @@ public class PlayerController : MonoBehaviour
             }
         } else if (other.CompareTag("Damage Boost"))
         {
-            weaponController.damage *= 2;
-            playerRenderer.material = damageMaterial;
+            StartCoroutine("DamageBoost");
         }
         //Destroy the pick up object
         Destroy(other.gameObject);
@@ -145,5 +145,14 @@ public class PlayerController : MonoBehaviour
         SpawnHitBox();
         yield return new WaitForSeconds(0.1f);
         RemoveHitBox();
+    }
+    //Double the damage of the players attack and change the player color to red
+    IEnumerator DamageBoost()
+    {
+        weaponController.damage *= 2;
+        playerRenderer.material = damageMaterial;
+        yield return new WaitForSeconds(5.0f);
+        weaponController.damage /= 2;
+        playerRenderer.material = normalMaterial;
     }
 }
