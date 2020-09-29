@@ -17,9 +17,7 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
-        spawnMonster(0);
-        spawnMonster(1);
-        spawnMonster(2); 
+        WaveOne();
     }
 
     // Update is called once per frame
@@ -51,5 +49,12 @@ public class SpawnManager : MonoBehaviour
         spawnPos = new Vector3(Random.Range(xRange, -xRange), yPos, Random.Range(zRange, -zRange));
         //Spawn enemy of given index
         Instantiate(enemyPrefabs[monsterIndex], spawnPos, enemyPrefabs[monsterIndex].transform.rotation);
+    }
+
+    private void WaveOne()
+    {
+        for (int i = 0; i < 5; i++) {
+            spawnMonster(0);
+        }
     }
 }

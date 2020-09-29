@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //Variables for character movement
-    public float forwardInput;
-    public float horizontalInput;
+    private float forwardInput;
+    private float horizontalInput;
     public float speed = 5000.0f;
     //Vatiables for player boosts
     private float speedBoost = 2500.0f;
