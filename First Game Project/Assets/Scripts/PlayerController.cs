@@ -12,10 +12,16 @@ public class PlayerController : MonoBehaviour
     public float tankMonsterPower = 2000.0f;
     public float monsterPower = 1000.0f;
     public float fastMonsterPower = 500.0f;
+    //Variables for monster attack power
+    public float tankMonsterAttack = 50.0f;
+    public float monsterAttack = 25.0f;
+    public float fastMonsterAttack = 12.5f;
     //Player rigidbody variable 
     private Rigidbody playerRb;
     //Hit box game object variable
     public GameObject hitBox;
+    //Variable for player health
+    public float health = 250;
 
     // Start is called before the first frame update
     void Start()
@@ -78,24 +84,30 @@ public class PlayerController : MonoBehaviour
     //When player collides with monster the monster will knock the player away
     private void OnCollisionEnter(Collision collision)
     {
-        //For each type of monster call KnockAway function with correct knock back power
+        //For each type of monster call Damage function with correct knock back power and damage to player health
         if (collision.gameObject.CompareTag("Tank Monster"))
         {
-            KnockAway(collision.gameObject, tankMonsterPower);
+            Damage(collision.gameObject, tankMonsterPower, tankMonsterAttack);
         } else if (collision.gameObject.CompareTag("Regular Monster"))
         {
-            KnockAway(collision.gameObject, monsterPower);
+            Damage(collision.gameObject, monsterPower, monsterAttack);
         } else if (collision.gameObject.CompareTag("Fast Monster"))
         {
-            KnockAway(collision.gameObject, fastMonsterPower);
+            Damage(collision.gameObject, fastMonsterPower, fastMonsterAttack);
         }
     }
     //Method to determine knock back power based on monster type
-    void KnockAway(GameObject collision, float monsterPower)
+    void Damage(GameObject collision, float monsterPower, float monsterAttack)
     {
         //Knock the player away from the monster
         Vector3 awayFromMonster = (transform.position - collision.gameObject.transform.position);
         playerRb.AddForce(awayFromMonster * monsterPower, ForceMode.Impulse);
+        //Damage the player
+        health -= monsterAttack;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
     //Destroy power up when the player collides with it
     private void OnTriggerEnter(Collider other)
