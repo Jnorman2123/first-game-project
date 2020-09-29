@@ -16,13 +16,17 @@ public class PlayerController : MonoBehaviour
     public float tankMonsterAttack = 50.0f;
     public float monsterAttack = 25.0f;
     public float fastMonsterAttack = 12.5f;
-    //Player rigidbody variable 
+    //Player rigidbody and renderer variables
     private Rigidbody playerRb;
+    private Renderer playerRenderer;
     //Hit box game object variable and weapon controller script
     public GameObject hitBox;
     private WeaponController weaponController;
     //Variable for player health
     public float health = 250;
+    //Variables for materials
+    public Material damageMaterial;
+    public Material speedMaterial;
     
 
     // Start is called before the first frame update
@@ -32,6 +36,8 @@ public class PlayerController : MonoBehaviour
         weaponController = hitBox.GetComponent<WeaponController>();
         //Set playerRb to player rigidbody component
         playerRb = GetComponent<Rigidbody>();
+        //Set playerMaterial
+        playerRenderer = GetComponent<Renderer>();
     }
 
     // Update is called once per frame
@@ -128,6 +134,7 @@ public class PlayerController : MonoBehaviour
         } else if (other.CompareTag("Damage Boost"))
         {
             weaponController.damage *= 2;
+            playerRenderer.material = damageMaterial;
         }
         //Destroy the pick up object
         Destroy(other.gameObject);
