@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
         //Destroy the pick up object
         Destroy(other.gameObject);
     }
-
+    //Spawn hit box wait split second and then despawn hitbox
     IEnumerator Attack()
     {
         SpawnHitBox();

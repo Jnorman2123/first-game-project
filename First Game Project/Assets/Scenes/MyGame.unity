@@ -399,7 +399,7 @@ Transform:
   m_LocalScale: {x: 6, y: 1, z: 6}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &976398204
 GameObject:
@@ -494,7 +494,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &976398209
 MonoBehaviour:
@@ -514,6 +514,7 @@ MonoBehaviour:
   tankMonsterPower: 2000
   monsterPower: 1000
   fastMonsterPower: 500
+  hitBox: {fileID: 2196095461961044004, guid: 854ad3c2e6243c24e82f9d9afa5f2ed9, type: 3}
 --- !u!54 &976398210
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1112,7 +1113,7 @@ PrefabInstance:
     - target: {fileID: 3835951221972296199, guid: ec13dddb8f75f204b945b8c78980f98b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3835951221972296199, guid: ec13dddb8f75f204b945b8c78980f98b,
         type: 3}
@@ -1176,7 +1177,7 @@ PrefabInstance:
     - target: {fileID: 4282486824300653553, guid: ab6dda5655e51f148a1e979f7614718e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4282486824300653553, guid: ab6dda5655e51f148a1e979f7614718e,
         type: 3}
