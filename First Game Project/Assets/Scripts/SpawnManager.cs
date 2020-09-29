@@ -74,9 +74,9 @@ public class SpawnManager : MonoBehaviour
             case 2:
                 WaveTwo();
                 break;
-            //case 3:
-            //WaveThree();
-            //break;
+            case 3:
+                WaveThree();
+                break;
             default:
                 break;
         }
@@ -103,6 +103,27 @@ public class SpawnManager : MonoBehaviour
         for (int n = 0; n < 2; n++)
         {
             spawnMonster(1);
+        }
+        //Spawn a random boost every 10 seconds after 5 second delay
+        InvokeRepeating("SpawnBoost", 5.0f, 10.0f);
+    }
+    //Function to spawn the third wave of monsters 
+    private void WaveThree()
+    {
+        //Spawn 3 regular monsters
+        for (int i = 0; i < 3; i++)
+        {
+            spawnMonster(0);
+        }
+        //Spawn 2 fast monsters
+        for (int n = 0; n < 2; n++)
+        {
+            spawnMonster(1);
+        }
+        //Spawn 2 tank monsters
+        for (int j = 0; j < 2; j++)
+        {
+            spawnMonster(2);
         }
         //Spawn a random boost every 10 seconds after 5 second delay
         InvokeRepeating("SpawnBoost", 5.0f, 10.0f);
