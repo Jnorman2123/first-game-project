@@ -7,7 +7,10 @@ public class PlayerController : MonoBehaviour
     //Variables for character movement
     public float forwardInput;
     public float horizontalInput;
-    public float speed = 75.0f;
+    public float speed = 5000.0f;
+    //Vatiables for player boosts
+    private float speedBoost = 2500.0f;
+    private float damageBoost = 2.0f;
     //Variables for monster knock back power
     public float tankMonsterPower = 2000.0f;
     public float monsterPower = 1000.0f;
@@ -135,6 +138,9 @@ public class PlayerController : MonoBehaviour
         } else if (other.CompareTag("Damage Boost"))
         {
             StartCoroutine("DamageBoost");
+        } else if (other.CompareTag("Speed Boost"))
+        {
+            StartCoroutine("SpeedBoost");
         }
         //Destroy the pick up object
         Destroy(other.gameObject);
@@ -149,10 +155,23 @@ public class PlayerController : MonoBehaviour
     //Double the damage of the players attack and change the player color to red
     IEnumerator DamageBoost()
     {
-        weaponController.damage *= 2;
+        //Weapon damage is doubled and player changes color to red
+        weaponController.damage *= damageBoost;
         playerRenderer.material = damageMaterial;
         yield return new WaitForSeconds(5.0f);
-        weaponController.damage /= 2;
+        //After 5 seconds damage and player color goes back to normal
+        weaponController.damage /= damageBoost;
+        playerRenderer.material = normalMaterial;
+    }
+    //Increase the speed of the players movement and change player color to yellow
+    IEnumerator SpeedBoost()
+    {
+        //Speed is increased by speed boost and color changes to yellow
+        speed += speedBoost;
+        playerRenderer.material = speedMaterial;
+        yield return new WaitForSeconds(5.0f);
+        //After 5 seconds speed and player color goes back to normal
+        speed -= speedBoost;
         playerRenderer.material = normalMaterial;
     }
 }
