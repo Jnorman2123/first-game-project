@@ -35,7 +35,7 @@ public class SpawnManager : MonoBehaviour
         fastMonsters = GameObject.FindGameObjectsWithTag("Fast Monster");
         tankMonsters = GameObject.FindGameObjectsWithTag("Tank Monster");
         allMonsters = regularMonsters.Length + fastMonsters.Length + tankMonsters.Length;
-        //If no monsters left spawn a new wave and increment the wave number
+        //If no monsters left stop previous SpawnBoost function, spawn a new wave, and increment the wave number
         if (allMonsters == 0)
         {
             CancelInvoke("SpawnBoost");
@@ -63,7 +63,7 @@ public class SpawnManager : MonoBehaviour
         //Spawn enemy of given index
         Instantiate(enemyPrefabs[monsterIndex], enemySpawnPos, enemyPrefabs[monsterIndex].transform.rotation);
     }
-    //Function to spawn a wave by number and when monsters are dead move to next wave
+    //Function to spawn a wave by number
     private void NextWave(int wave)
     {
        switch (wave)
@@ -71,9 +71,9 @@ public class SpawnManager : MonoBehaviour
             case 1:
                 WaveOne();
                 break;
-            //case 2:
-            //WaveTwo();
-            //break;
+            case 2:
+                WaveTwo();
+                break;
             //case 3:
             //WaveThree();
             //break;
@@ -87,6 +87,22 @@ public class SpawnManager : MonoBehaviour
         //Spawn 5 regular monsters
         for (int i = 0; i < 5; i++) {
             spawnMonster(0);
+        }
+        //Spawn a random boost every 10 seconds after 5 second delay
+        InvokeRepeating("SpawnBoost", 5.0f, 10.0f);
+    }
+    //Function to spawn the second wave of monsters
+    private void WaveTwo()
+    {
+        //Spawn 3 regular monsters
+        for (int i = 0; i < 3; i++)
+        {
+            spawnMonster(0);
+        }
+        //Spawn 2 fast monsters
+        for (int n = 0; n < 2; n++)
+        {
+            spawnMonster(1);
         }
         //Spawn a random boost every 10 seconds after 5 second delay
         InvokeRepeating("SpawnBoost", 5.0f, 10.0f);
