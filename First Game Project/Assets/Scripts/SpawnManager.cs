@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class SpawnManager : MonoBehaviour
@@ -55,6 +56,11 @@ public class SpawnManager : MonoBehaviour
         NextWave(waveNumber);
         waveNumber += 1;
         titleScreen.gameObject.SetActive(false);
+    }
+    // Function to restart the game
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     // Function to spawn the next wave and cancel previous boost spawn
     void SpawnWave()
@@ -144,5 +150,6 @@ public class SpawnManager : MonoBehaviour
     {
         gameIsStarted = false;
         deathScreen.gameObject.SetActive(true);
+        CancelInvoke("SpawnBoost");
     }
 }
