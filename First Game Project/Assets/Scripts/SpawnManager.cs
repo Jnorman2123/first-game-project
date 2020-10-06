@@ -12,8 +12,9 @@ public class SpawnManager : MonoBehaviour
     //Variables for random spawn location
     private Vector3 enemySpawnPos;
     private Vector3 boostSpawnPos;
-    // Variables for title screen and death screen
+    // Variables for title screen, victory screen and death screen
     [SerializeField] TextMeshProUGUI titleScreen;
+    [SerializeField] TextMeshProUGUI victoryScreen;
     [SerializeField] TextMeshProUGUI deathScreen;
     //Variables for spawn ranges
     private float zRange = 13.5f;
@@ -109,6 +110,9 @@ public class SpawnManager : MonoBehaviour
             case 5:
                 Wave(5, 3, 3);
                 break;
+            case 6:
+                Victory();
+                break;
             default:
                 break;
         }
@@ -150,6 +154,13 @@ public class SpawnManager : MonoBehaviour
     {
         gameIsStarted = false;
         deathScreen.gameObject.SetActive(true);
+        CancelInvoke("SpawnBoost");
+    }
+    // Function to call victory screen
+    void Victory()
+    {
+        gameIsStarted = false;
+        victoryScreen.gameObject.SetActive(true);
         CancelInvoke("SpawnBoost");
     }
 }
