@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class SpawnManager : MonoBehaviour
     //Variables for random spawn location
     private Vector3 enemySpawnPos;
     private Vector3 boostSpawnPos;
+    // Variables for title screen
+    [SerializeField] TextMeshProUGUI titleScreen;
     //Variables for spawn ranges
     private float zRange = 13.5f;
     private float xRange = 24.0f;
@@ -34,14 +37,15 @@ public class SpawnManager : MonoBehaviour
         regularMonsters = GameObject.FindGameObjectsWithTag("Regular Monster");
         fastMonsters = GameObject.FindGameObjectsWithTag("Fast Monster");
         tankMonsters = GameObject.FindGameObjectsWithTag("Tank Monster");
-        allMonsters = regularMonsters.Length + fastMonsters.Length + tankMonsters.Length;
-        //If no monsters left stop previous SpawnBoost function, spawn a new wave, and increment the wave number
-        if (allMonsters == 0)
-        {
-            CancelInvoke("SpawnBoost");
-            NextWave(waveNumber);
-            waveNumber += 1; 
-        }
+        allMonsters = regularMonsters.Length + fastMonsters.Length + tankMonsters.Length;   
+    }
+    // Function to begin the game and disable the title screen
+    public void StartGame()
+    {
+        // Stop previous SpawnBoost function, spawn a new wave, and increment the wave number
+        NextWave(waveNumber);
+        waveNumber += 1;
+        titleScreen.gameObject.SetActive(false);
     }
     //Function to spawn a monster and a random location
     private void spawnMonster(int monsterIndex)
