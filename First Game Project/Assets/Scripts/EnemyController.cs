@@ -12,6 +12,8 @@ public class EnemyController : MonoBehaviour
     private Rigidbody enemyRb;
     //Enemy health variable
     public int health;
+    // spawn manager variable
+    private SpawnManager spawnManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,12 +21,17 @@ public class EnemyController : MonoBehaviour
         enemyRb = GetComponent<Rigidbody>();
         //player to player game object
         player = GameObject.Find("Player");
+        // Set spawnManager
+        spawnManager = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        MoveEnemy();
+        if (spawnManager.gameIsStarted)
+        {
+            MoveEnemy();
+        }  
     }
 
     //Create function to move enemies 

@@ -11,8 +11,9 @@ public class SpawnManager : MonoBehaviour
     //Variables for random spawn location
     private Vector3 enemySpawnPos;
     private Vector3 boostSpawnPos;
-    // Variables for title screen
+    // Variables for title screen and death screen
     [SerializeField] TextMeshProUGUI titleScreen;
+    [SerializeField] TextMeshProUGUI deathScreen;
     //Variables for spawn ranges
     private float zRange = 13.5f;
     private float xRange = 24.0f;
@@ -23,7 +24,7 @@ public class SpawnManager : MonoBehaviour
     private int allMonsters;
     private int waveNumber;
     // Game is started variable
-    private bool gameIsStarted;
+    public bool gameIsStarted;
 
     // Start is called before the first frame update
     void Start()
@@ -137,5 +138,11 @@ public class SpawnManager : MonoBehaviour
         boostSpawnPos = new Vector3(Random.Range(xRange, -xRange), yPos, Random.Range(zRange, -zRange));
         //Spawn boost
         Instantiate(boosts[boostIndex], boostSpawnPos, boosts[boostIndex].transform.rotation);
+    }
+    // Function to bring up death screen when player health is zero
+    public void Death()
+    {
+        gameIsStarted = false;
+        deathScreen.gameObject.SetActive(true);
     }
 }

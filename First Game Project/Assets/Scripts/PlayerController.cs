@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     public Material normalMaterial;
     public Material damageMaterial;
     public Material speedMaterial;
+    // Variable for spawn manager
+    private SpawnManager spawnManager;
     
 
     // Start is called before the first frame update
@@ -42,18 +44,23 @@ public class PlayerController : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         //Set playerMaterial
         playerRenderer = GetComponent<Renderer>();
+        // Set playerManager
+        spawnManager = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Call move player function to move player
-        MovePlayer();
-        //Call attack function to spawn a hit box when space bar is pressed
-        if (Input.GetKeyDown(KeyCode.Space))
+        //Call move player function to move player if the game is started
+        if (spawnManager.gameIsStarted)
         {
-            StartCoroutine("Attack");
-        }   
+            MovePlayer();
+            //Call attack function to spawn a hit box when space bar is pressed
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StartCoroutine("Attack");
+            }
+        }    
     }
 
     //Method to move character based on user input
@@ -121,6 +128,7 @@ public class PlayerController : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            spawnManager.Death();
         }
     }
     //Destroy power up when the player collides with it
