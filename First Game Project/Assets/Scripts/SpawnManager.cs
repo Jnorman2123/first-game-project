@@ -22,6 +22,8 @@ public class SpawnManager : MonoBehaviour
     private GameObject[] tankMonsters;
     private int allMonsters;
     private int waveNumber;
+    // Game is started variable
+    private bool gameIsStarted;
 
     // Start is called before the first frame update
     void Start()
@@ -37,15 +39,28 @@ public class SpawnManager : MonoBehaviour
         regularMonsters = GameObject.FindGameObjectsWithTag("Regular Monster");
         fastMonsters = GameObject.FindGameObjectsWithTag("Fast Monster");
         tankMonsters = GameObject.FindGameObjectsWithTag("Tank Monster");
-        allMonsters = regularMonsters.Length + fastMonsters.Length + tankMonsters.Length;   
+        allMonsters = regularMonsters.Length + fastMonsters.Length + tankMonsters.Length;
+        // If all monsters are dead spawn the next wave of monsters 
+        if (allMonsters <= 0 && gameIsStarted)
+        {
+            SpawnWave();
+        }
     }
     // Function to begin the game and disable the title screen
     public void StartGame()
     {
         // Stop previous SpawnBoost function, spawn a new wave, and increment the wave number
+        gameIsStarted = true;
         NextWave(waveNumber);
         waveNumber += 1;
         titleScreen.gameObject.SetActive(false);
+    }
+    // Function to spawn the next wave and cancel previous boost spawn
+    void SpawnWave()
+    {
+        CancelInvoke("SpawnBoost");
+        NextWave(waveNumber);
+        waveNumber += 1;
     }
     //Function to spawn a monster and a random location
     private void spawnMonster(int monsterIndex)
