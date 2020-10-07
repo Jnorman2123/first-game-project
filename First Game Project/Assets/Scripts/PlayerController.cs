@@ -25,14 +25,17 @@ public class PlayerController : MonoBehaviour
     //Hit box game object variable and weapon controller script
     public GameObject hitBox;
     private WeaponController weaponController;
-    //Variable for player health
-    public float health = 250;
+    //Variables for player health
+    public float maxHealth = 250;
+    public float currentHealth;
     //Variables for materials
     public Material normalMaterial;
     public Material damageMaterial;
     public Material speedMaterial;
     // Variable for spawn manager
     private SpawnManager spawnManager;
+    // Variable for health bar
+    public HealthBar healthBar;
     
 
     // Start is called before the first frame update
@@ -46,6 +49,10 @@ public class PlayerController : MonoBehaviour
         playerRenderer = GetComponent<Renderer>();
         // Set playerManager
         spawnManager = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
+        // Set currentHealth to maxHealth
+        currentHealth = maxHealth;
+        // Set health bar to max health
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -124,8 +131,9 @@ public class PlayerController : MonoBehaviour
         Vector3 awayFromMonster = (transform.position - collision.gameObject.transform.position);
         playerRb.AddForce(awayFromMonster * monsterPower, ForceMode.Impulse);
         //Damage the player
-        health -= monsterAttack;
-        if (health <= 0)
+        currentHealth -= monsterAttack;
+        healthBar.SetHealth(currentHealth);
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
             spawnManager.Death();
@@ -138,10 +146,12 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Health Potion"))
         {
             //Heal player by 50 but dont excede initial health of 250
-            health += 50;
-            if (health >= 250)
+            currentHealth += 50;
+            healthBar.SetHealth(currentHealth);
+            if (currentHealth >= maxHealth)
             {
-                health = 250;
+                currentHealth = maxHealth;
+                healthBar.SetHealth(currentHealth);
             }
         } else if (other.CompareTag("Damage Boost"))
         {
