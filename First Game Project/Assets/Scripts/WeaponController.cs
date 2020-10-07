@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour
 {
     //Variable for attack damage
-    public float damage;
+    public float damage = 50;
     // Start is called before the first frame update
     void Start()
     {

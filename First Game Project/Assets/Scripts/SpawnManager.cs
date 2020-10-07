@@ -27,12 +27,17 @@ public class SpawnManager : MonoBehaviour
     private int waveNumber;
     // Game is started variable
     public bool gameIsStarted;
+    // Variable for weapon and weapon controller
+    public GameObject weapon;
+    private WeaponController weaponController;
 
     // Start is called before the first frame update
     void Start()
     {
         //Set waveNumber to 1 intitially
         waveNumber = 1;
+        // Set weaponController
+        weaponController = weapon.GetComponent<WeaponController>();
     }
 
     // Update is called once per frame
@@ -52,11 +57,12 @@ public class SpawnManager : MonoBehaviour
     // Function to begin the game and disable the title screen
     public void StartGame()
     {
-        // Stop previous SpawnBoost function, spawn a new wave, and increment the wave number
+        // Set game is started, spawn first wave, increment the wave number, and set title screen active to false
         gameIsStarted = true;
         NextWave(waveNumber);
         waveNumber += 1;
         titleScreen.gameObject.SetActive(false);
+        weaponController.damage = 50;
     }
     // Function to restart the game
     public void RestartGame()
