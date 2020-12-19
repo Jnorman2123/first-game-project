@@ -9,7 +9,9 @@ public class PlayerController : MonoBehaviour
     //Variables for character movement
     private float forwardInput;
     private float horizontalInput;
-    public float speed = 5000.0f;
+    [SerializeField] float turnSpeed;
+    private float turnPlayer = 0.0f;
+    public float moveSpeed = 50.0f;
     //Vatiables for player boosts
     private float speedBoost = 2500.0f;
     private float damageBoost = 2.0f;
@@ -79,17 +81,13 @@ public class PlayerController : MonoBehaviour
         forwardInput = Input.GetAxisRaw("Vertical");
         horizontalInput = Input.GetAxisRaw("Horizontal");
         //Set movement variable to the player inputs
-        Vector3 movement = new Vector3(horizontalInput, 0.0f, forwardInput); 
+        Vector3 movement = new Vector3(0.0f, 0.0f, forwardInput);
         //Move character in direction of input
-        playerRb.AddForce(movement * speed * Time.deltaTime, ForceMode.Impulse);
-        //Make character automatically face the direction it is moving, lock rotation if no input
-        if(horizontalInput != 0 || forwardInput != 0)
-        {
-            transform.rotation = Quaternion.LookRotation(movement);
-        } else if (horizontalInput == 0 && forwardInput ==0)
-        {
-            playerRb.freezeRotation = true;
-        }
+        transform.Translate(movement * Time.deltaTime * moveSpeed);
+        // Turn character based on user horizontal input
+        turnPlayer += horizontalInput * turnSpeed * Time.deltaTime; 
+        transform.eulerAngles = new Vector3(0.0f, turnPlayer, 0.0f);
+        
        
     }
     //Function to spawn a hit box when the player presses the space bar
@@ -187,11 +185,11 @@ public class PlayerController : MonoBehaviour
     IEnumerator SpeedBoost()
     {
         //Speed is increased by speed boost and color changes to yellow
-        speed += speedBoost;
+        moveSpeed += speedBoost;
         playerRenderer.material = speedMaterial;
         yield return new WaitForSeconds(5.0f);
         //After 5 seconds speed and player color goes back to normal
-        speed -= speedBoost;
+        moveSpeed -= speedBoost;
         playerRenderer.material = normalMaterial;
     }
 }
