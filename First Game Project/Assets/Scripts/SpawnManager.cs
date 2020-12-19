@@ -60,11 +60,14 @@ public class SpawnManager : MonoBehaviour
     // Function to begin the game and disable the title screen
     public void StartGame()
     {
-        // Set game is started, spawn first wave, increment the wave number, and set title screen active to false
+        // Set game is started, spawn first wave, increment the wave number
         gameIsStarted = true;
         NextWave(waveNumber);
         waveNumber += 1;
+        // Deactivate the title screen game camera and activate the player camera
         titleScreen.gameObject.SetActive(false);
+        gameCamera.gameObject.SetActive(false);
+        playerCamera.gameObject.SetActive(true);
         weaponController.damage = 50;
     }
     // Function to restart the game
@@ -161,15 +164,23 @@ public class SpawnManager : MonoBehaviour
     // Function to bring up death screen when player health is zero
     public void Death()
     {
-        gameIsStarted = false;
-        deathScreen.gameObject.SetActive(true);
+        // Game is started changes to false and spawn boost is stopped
         CancelInvoke("SpawnBoost");
+        gameIsStarted = false;
+        // Activate the death screen and main camera and deactivate the player camera
+        deathScreen.gameObject.SetActive(true);
+        gameCamera.gameObject.SetActive(true);
+        playerCamera.gameObject.SetActive(false);
     }
     // Function to call victory screen
     void Victory()
     {
+        // Game is started changes to false and spawn boost is stopped
         gameIsStarted = false;
-        victoryScreen.gameObject.SetActive(true);
         CancelInvoke("SpawnBoost");
+        // Activate the victory screen and main camera and deactivate the player camera
+        victoryScreen.gameObject.SetActive(true);
+        gameCamera.gameObject.SetActive(true);
+        playerCamera.gameObject.SetActive(false);
     }
 }
