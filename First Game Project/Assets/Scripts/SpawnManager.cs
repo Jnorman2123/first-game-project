@@ -30,6 +30,9 @@ public class SpawnManager : MonoBehaviour
     // Variable for weapon and weapon controller
     public GameObject weapon;
     private WeaponController weaponController;
+    // Variables for game and player cameras
+    private GameObject gameCamera;
+    private GameObject playerCamera;
 
     // Start is called before the first frame update
     void Start()
