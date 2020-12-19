@@ -30,14 +30,18 @@ public class SpawnManager : MonoBehaviour
     // Variable for weapon and weapon controller
     public GameObject weapon;
     private WeaponController weaponController;
-    // Variables for game and player cameras
+    // Variables for game and player cameras and camera mode
     [SerializeField] GameObject gameCamera;
     [SerializeField] GameObject playerCamera;
+    public int cameraMode;
 
     // Start is called before the first frame update
     void Start()
     {
-        //Set waveNumber to 1 intitially
+        // Activate main camera and deactivate player camera
+        cameraMode = 0;
+        StartCoroutine(CameraChange());
+        // Set waveNumber to 1 intitially
         waveNumber = 1;
         // Set weaponController
         weaponController = weapon.GetComponent<WeaponController>();
@@ -66,8 +70,8 @@ public class SpawnManager : MonoBehaviour
         waveNumber += 1;
         // Deactivate the title screen game camera and activate the player camera
         titleScreen.gameObject.SetActive(false);
-        gameCamera.gameObject.SetActive(false);
-        playerCamera.gameObject.SetActive(true);
+        cameraMode = 1;
+        StartCoroutine(CameraChange());
         weaponController.damage = 50;
     }
     // Function to restart the game
@@ -169,8 +173,8 @@ public class SpawnManager : MonoBehaviour
         gameIsStarted = false;
         // Activate the death screen and main camera and deactivate the player camera
         deathScreen.gameObject.SetActive(true);
-        gameCamera.gameObject.SetActive(true);
-        playerCamera.gameObject.SetActive(false);
+        cameraMode = 0;
+        StartCoroutine(CameraChange());
     }
     // Function to call victory screen
     void Victory()
@@ -180,7 +184,22 @@ public class SpawnManager : MonoBehaviour
         CancelInvoke("SpawnBoost");
         // Activate the victory screen and main camera and deactivate the player camera
         victoryScreen.gameObject.SetActive(true);
-        gameCamera.gameObject.SetActive(true);
-        playerCamera.gameObject.SetActive(false);
+        cameraMode = 0;
+        StartCoroutine(CameraChange());
+    }
+    // IEnumerator to change from game camera to player camera
+    IEnumerator CameraChange()
+    {
+        yield return new WaitForSeconds(0.01f);
+        if (cameraMode == 0)
+        {
+            gameCamera.SetActive(true);
+            playerCamera.SetActive(false);
+        }
+        if (cameraMode == 1)
+        {
+            gameCamera.SetActive(false);
+            playerCamera.SetActive(true);
+        }
     }
 }
