@@ -11,9 +11,9 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput;
     [SerializeField] float turnSpeed;
     private float turnPlayer = 0.0f;
-    public float moveSpeed = 50.0f;
+    public float moveSpeed = 12.5f;
     //Vatiables for player boosts
-    private float speedBoost = 2500.0f;
+    private float speedBoost = 1.5f;
     private float damageBoost = 2.0f;
     //Variables for monster knock back power
     public float tankMonsterPower = 2000.0f;
@@ -86,9 +86,7 @@ public class PlayerController : MonoBehaviour
         transform.Translate(movement * Time.deltaTime * moveSpeed);
         // Turn character based on user horizontal input
         turnPlayer += horizontalInput * turnSpeed * Time.deltaTime; 
-        transform.eulerAngles = new Vector3(0.0f, turnPlayer, 0.0f);
-        
-       
+        transform.eulerAngles = new Vector3(0.0f, turnPlayer, 0.0f);     
     }
     //Function to spawn a hit box when the player presses the space bar
     private void SpawnHitBox()
@@ -185,11 +183,11 @@ public class PlayerController : MonoBehaviour
     IEnumerator SpeedBoost()
     {
         //Speed is increased by speed boost and color changes to yellow
-        moveSpeed += speedBoost;
+        moveSpeed *= speedBoost;
         playerRenderer.material = speedMaterial;
         yield return new WaitForSeconds(5.0f);
         //After 5 seconds speed and player color goes back to normal
-        moveSpeed -= speedBoost;
+        moveSpeed /= speedBoost;
         playerRenderer.material = normalMaterial;
     }
 }
