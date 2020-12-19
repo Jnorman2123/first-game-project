@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // Variable for player start position
+    private Vector3 startPosition = new Vector3(0, 0.65f, 0);
     //Variables for character movement
     private float forwardInput;
     private float horizontalInput;
@@ -135,7 +137,7 @@ public class PlayerController : MonoBehaviour
         healthBar.SetHealth(currentHealth);
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            transform.position = startPosition;
             spawnManager.Death();
         }
     }
