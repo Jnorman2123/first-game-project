@@ -26,8 +26,8 @@ public class PlayerController : MonoBehaviour
     //Player rigidbody and renderer variables
     private Rigidbody playerRb;
     private Renderer playerRenderer;
-    //Hit box game object variable and weapon controller script
-    public GameObject hitBox;
+    //Sword game object variable and weapon controller script
+    public GameObject sword;
     private WeaponController weaponController;
     //Variables for player health
     public float maxHealth = 250;
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         //Set weapon controller
-        weaponController = hitBox.GetComponent<WeaponController>();
+        weaponController = sword.GetComponent<WeaponController>();
         //Set playerRb to player rigidbody component
         playerRb = GetComponent<Rigidbody>();
         //Set playerMaterial
@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
         transform.eulerAngles = new Vector3(0.0f, turnPlayer, 0.0f);     
     }
     //Function to spawn a hit box when the player presses the space bar
-    private void SpawnHitBox()
+    /*private void SpawnHitBox()
     {
         //Get player position vector3 and rotation
         Vector3 playerPosition = transform.position;
@@ -103,13 +103,13 @@ public class PlayerController : MonoBehaviour
         Vector3 hitBoxPosition = playerPosition + playerDirection * spawnDistance;
         //Create new weapon
         Instantiate(hitBox, hitBoxPosition, playerRotation);
-    }
+    }*/
     //Function to destroy the hit box
-    private void RemoveHitBox()
+    /*private void RemoveHitBox()
     {
         GameObject hitBoxClone = GameObject.Find("Hit Box(Clone)");
         Destroy(hitBoxClone);
-    }
+    }*/
     //When player collides with monster the monster will knock the player away
     private void OnCollisionEnter(Collision collision)
     {
@@ -167,9 +167,10 @@ public class PlayerController : MonoBehaviour
     //Spawn hit box wait split second and then despawn hitbox
     IEnumerator Attack()
     {
-        SpawnHitBox();
+        //SpawnHitBox();
+        weaponController.swordAnim.Play("Sword_Attack");
         yield return new WaitForSeconds(0.1f);
-        RemoveHitBox();
+        //RemoveHitBox();
     }
 
     // Add delay between attacks
