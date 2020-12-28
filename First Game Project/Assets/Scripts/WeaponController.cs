@@ -6,12 +6,11 @@ public class WeaponController : MonoBehaviour
 {
     // Variable for attack damage
     public float damage = 50;
-    // Variable for sword animation
-    public Animation swordAnim;
+
     // Start is called before the first frame update
     void Start()
     {
-        swordAnim = GetComponent<Animation>();
+       
     }
 
     // Update is called once per frame
@@ -20,11 +19,11 @@ public class WeaponController : MonoBehaviour
         
     }
     //On collision with monster do damage to monster
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.CompareTag("Regular Monster") || other.gameObject.CompareTag("Tank Monster") || other.gameObject.CompareTag("Fast Monster"))
+        if (collision.gameObject.CompareTag("Regular Monster") || collision.gameObject.CompareTag("Tank Monster") || collision.gameObject.CompareTag("Fast Monster"))
         {
-            other.gameObject.SendMessage("TakeDamage", damage);
+            collision.gameObject.SendMessage("TakeDamage", damage);
         }
     }
 }

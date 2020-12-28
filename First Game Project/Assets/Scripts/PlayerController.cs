@@ -26,8 +26,11 @@ public class PlayerController : MonoBehaviour
     //Player rigidbody and renderer variables
     private Rigidbody playerRb;
     private Renderer playerRenderer;
-    //Sword game object variable and weapon controller script
+    //Sword and sword animation
     public GameObject sword;
+    Animation swordAttack;
+    //hitBox game object variable and weapon controller script
+    public GameObject hitBox;
     private WeaponController weaponController;
     //Variables for player health
     public float maxHealth = 250;
@@ -48,7 +51,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         //Set weapon controller
-        weaponController = sword.GetComponent<WeaponController>();
+        weaponController = hitBox.GetComponent<WeaponController>();
         //Set playerRb to player rigidbody component
         playerRb = GetComponent<Rigidbody>();
         //Set playerMaterial
