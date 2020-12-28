@@ -183,6 +183,15 @@ public class PlayerController : MonoBehaviour
         // Create new hit box
         Instantiate(hitBox, hitBoxPosition, playerRotation);
     }
+
+    // Function to destroy the hitBox
+    private void RemoveHitBox()
+    {
+        // Find the hit box game object and destroy it
+        GameObject hitBoxClone = GameObject.Find("HitBox(Clone)");
+        Destroy(hitBoxClone);
+    }
+
     //Spawn hit box wait split second and then despawn hitbox
     IEnumerator Attack()
     {
