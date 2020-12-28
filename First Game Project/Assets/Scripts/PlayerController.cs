@@ -195,17 +195,17 @@ public class PlayerController : MonoBehaviour
     //Spawn hit box wait split second and then despawn hitbox
     IEnumerator Attack()
     {
-        //SpawnHitBox();
+        SpawnHitBox();
         swordAttack.Play("Sword_Attack");
-        yield return new WaitForSeconds(0.1f);
-        //RemoveHitBox();
+        yield return new WaitForSeconds(0.05f);
+        RemoveHitBox();
     }
 
     // Add delay between attacks
     IEnumerator DelayAttack()
     {
         attackDelay = false;
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.5f);
         attackDelay = true;
     }
 
