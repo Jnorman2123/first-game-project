@@ -62,6 +62,8 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;
         // Set health bar to max health
         healthBar.SetMaxHealth(maxHealth);
+        // Set sword attack animation
+        swordAttack = sword.GetComponent<Animation>();
     }
 
     // Update is called once per frame
@@ -167,11 +169,25 @@ public class PlayerController : MonoBehaviour
         //Destroy the pick up object
         Destroy(other.gameObject);
     }
+
+    // Function to spawn hit box when player attacks
+    private void SpawnHitBox()
+    {
+        // Get player position vector3 and rotation
+        Vector3 playerPosition = transform.position;
+        Vector3 playerDirection = transform.forward;
+        Quaternion playerRotation = transform.rotation;
+        float spawnDistance = 1.0f;
+        // Set hit box spawn position
+        Vector3 hitBoxPosition = playerPosition + playerDirection * spawnDistance;
+        // Create new hit box
+        Instantiate(hitBox, hitBoxPosition, playerRotation);
+    }
     //Spawn hit box wait split second and then despawn hitbox
     IEnumerator Attack()
     {
         //SpawnHitBox();
-        weaponController.swordAnim.Play("Sword_Attack");
+        swordAttack.Play("Sword_Attack");
         yield return new WaitForSeconds(0.1f);
         //RemoveHitBox();
     }
