@@ -26,9 +26,10 @@ public class PlayerController : MonoBehaviour
     //Player rigidbody and renderer variables
     private Rigidbody playerRb;
     private Renderer playerRenderer;
-    //Sword and sword animation
+    //Sword and sword animation and sword offset
     public GameObject sword;
     Animation swordAttack;
+    Vector3 swordOffset;
     //hitBox game object variable and weapon controller script
     public GameObject hitBox;
     private WeaponController weaponController;
@@ -62,8 +63,9 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;
         // Set health bar to max health
         healthBar.SetMaxHealth(maxHealth);
-        // Set sword attack animation
+        // Set sword attack animation and offset
         swordAttack = sword.GetComponent<Animation>();
+        swordOffset = new Vector3();
     }
 
     // Update is called once per frame
@@ -73,6 +75,8 @@ public class PlayerController : MonoBehaviour
         if (spawnManager.gameIsStarted)
         {
             MovePlayer();
+            // Have sword follower the player
+            sword.transform.position = gameObject.transform.position + swordOffset;
             //Call attack function to spawn a hit box when space bar is pressed
             if (Input.GetKeyDown(KeyCode.Space) && attackDelay)
             {
@@ -94,27 +98,9 @@ public class PlayerController : MonoBehaviour
         transform.Translate(movement * Time.deltaTime * moveSpeed);
         // Turn character based on user horizontal input
         turnPlayer += horizontalInput * turnSpeed * Time.deltaTime; 
-        transform.eulerAngles = new Vector3(0.0f, turnPlayer, 0.0f);     
+        transform.eulerAngles = new Vector3(0.0f, turnPlayer, 0.0f); 
     }
-    //Function to spawn a hit box when the player presses the space bar
-    /*private void SpawnHitBox()
-    {
-        //Get player position vector3 and rotation
-        Vector3 playerPosition = transform.position;
-        Vector3 playerDirection = transform.forward;
-        Quaternion playerRotation = transform.rotation;
-        float spawnDistance = 1.0f;
-        //Set hit box spawn
-        Vector3 hitBoxPosition = playerPosition + playerDirection * spawnDistance;
-        //Create new weapon
-        Instantiate(hitBox, hitBoxPosition, playerRotation);
-    }*/
-    //Function to destroy the hit box
-    /*private void RemoveHitBox()
-    {
-        GameObject hitBoxClone = GameObject.Find("Hit Box(Clone)");
-        Destroy(hitBoxClone);
-    }*/
+    
     //When player collides with monster the monster will knock the player away
     private void OnCollisionEnter(Collision collision)
     {
@@ -197,7 +183,7 @@ public class PlayerController : MonoBehaviour
     {
         SpawnHitBox();
         swordAttack.Play("Sword_Attack");
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         RemoveHitBox();
     }
 

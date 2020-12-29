@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    // Variable for attack damage
+    // Variables for attack damage and damage delay
     public float damage = 50;
-    // Variable for player game object and player controller
-    private GameObject player;
-    private PlayerController playerController;
+    private bool damageDelay = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Set player to the player game object
-        player = GameObject.Find("Player");
-        // Get player controller component
-        playerController = player.GetComponent<PlayerController>();
+ 
     }
 
     // Update is called once per frame
@@ -27,10 +22,14 @@ public class WeaponController : MonoBehaviour
     //On collision with monster do damage to monster
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Regular Monster") || collision.gameObject.CompareTag("Tank Monster") || collision.gameObject.CompareTag("Fast Monster") && playerController.attackDelay == false)
+        if (collision.gameObject.CompareTag("Regular Monster") || collision.gameObject.CompareTag("Tank Monster") || collision.gameObject.CompareTag("Fast Monster"))
         {
-            collision.gameObject.SendMessage("TakeDamage", damage);
-            Debug.Log("hit");
+            if(damageDelay == false)
+            {
+                damageDelay = true;
+                collision.gameObject.SendMessage("TakeDamage", damage);
+                Debug.Log("hit");
+            }       
         }
     }
 }
