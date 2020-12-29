@@ -6,6 +6,9 @@ public class WeaponController : MonoBehaviour
 {
     // Variable for attack damage
     public float damage = 50;
+    // Variable for player game object and player controller
+    public GameObject player;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +27,7 @@ public class WeaponController : MonoBehaviour
         if (collision.gameObject.CompareTag("Regular Monster") || collision.gameObject.CompareTag("Tank Monster") || collision.gameObject.CompareTag("Fast Monster"))
         {
             collision.gameObject.SendMessage("TakeDamage", damage);
+            Debug.Log("hit");
         }
     }
 }

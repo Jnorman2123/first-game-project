@@ -2113,7 +2113,6 @@ Transform:
   m_Children:
   - {fileID: 16593638}
   - {fileID: 465944676}
-  - {fileID: 1606974917}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2138,6 +2137,7 @@ MonoBehaviour:
   monsterAttack: 25
   fastMonsterAttack: 12.5
   sword: {fileID: 1606974916}
+  hitBox: {fileID: 5344631733462841249, guid: 22a71668b2e60ba45a88772ebfbe3dca, type: 3}
   maxHealth: 250
   currentHealth: 0
   normalMaterial: {fileID: 2100000, guid: d52a2010ad87d834b8fba5f0940fa559, type: 2}
@@ -2159,7 +2159,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 52
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!1 &1062808858
 GameObject:
@@ -2285,7 +2285,7 @@ MonoBehaviour:
   victoryScreen: {fileID: 574347530}
   deathScreen: {fileID: 2106890646}
   gameIsStarted: 0
-  weapon: {fileID: 1606974916}
+  weapon: {fileID: 5344631733462841249, guid: 22a71668b2e60ba45a88772ebfbe3dca, type: 3}
   gameCamera: {fileID: 1062808858}
   playerCamera: {fileID: 465944673}
   cameraMode: 0
@@ -2422,12 +2422,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1606974916}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.625, y: 0.25, z: 0.25}
-  m_LocalScale: {x: 0.15, y: 1, z: 0.15}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.9375, y: 1.4, z: 0.375}
+  m_LocalScale: {x: 0.22500001, y: 2.25, z: 0.22500001}
   m_Children: []
-  m_Father: {fileID: 976398208}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!111 &1606974918
 Animation:

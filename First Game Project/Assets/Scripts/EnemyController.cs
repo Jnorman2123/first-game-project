@@ -30,7 +30,7 @@ public class EnemyController : MonoBehaviour
     {
         if (spawnManager.gameIsStarted)
         {
-            MoveEnemy();
+            //MoveEnemy();
         }  
     }
 

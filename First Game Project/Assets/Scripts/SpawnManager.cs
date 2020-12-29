@@ -112,7 +112,7 @@ public class SpawnManager : MonoBehaviour
        switch (wave)
         {
             case 1:
-                Wave(3, 0, 0);
+                Wave(0, 0, 0);
                 break;
             case 2:
                 Wave(3, 2, 0);

@@ -177,7 +177,7 @@ public class PlayerController : MonoBehaviour
         Vector3 playerPosition = transform.position;
         Vector3 playerDirection = transform.forward;
         Quaternion playerRotation = transform.rotation;
-        float spawnDistance = 1.0f;
+        float spawnDistance = 1.5f;
         // Set hit box spawn position
         Vector3 hitBoxPosition = playerPosition + playerDirection * spawnDistance;
         // Create new hit box
@@ -197,7 +197,7 @@ public class PlayerController : MonoBehaviour
     {
         SpawnHitBox();
         swordAttack.Play("Sword_Attack");
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.2f);
         RemoveHitBox();
     }
 
