@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
         // Set sword attack animation and offset
         swordAttack = sword.GetComponent<Animation>();
-        swordOffset = new Vector3();
+        swordOffset = new Vector3(0.9375f, 0.75f, 0.375f);
     }
 
     // Update is called once per frame
