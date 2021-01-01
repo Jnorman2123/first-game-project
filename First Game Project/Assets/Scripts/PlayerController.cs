@@ -27,9 +27,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb;
     private Renderer playerRenderer;
     //Sword and sword animation and sword offset
-    public GameObject sword;
+    GameObject sword;
     Animation swordAttack;
-    Vector3 swordOffset;
+    // Vector3 swordOffset;
     //hitBox game object variable and weapon controller script
     public GameObject hitBox;
     private WeaponController weaponController;
@@ -63,9 +63,10 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;
         // Set health bar to max health
         healthBar.SetMaxHealth(maxHealth);
-        // Set sword attack animation and offset
+        // Set sword and sword attack animation
+        sword = transform.GetChild(2).gameObject;
         swordAttack = sword.GetComponent<Animation>();
-        swordOffset = new Vector3(0.9375f, 0.75f, 0.375f);
+        //swordOffset = new Vector3(0.9375f, 0.75f, 0.375f);
     }
 
     // Update is called once per frame
@@ -76,7 +77,7 @@ public class PlayerController : MonoBehaviour
         {
             MovePlayer();
             // Have sword follower the player
-            sword.transform.position = gameObject.transform.position + swordOffset;
+            // sword.transform.position = gameObject.transform.position + swordOffset;
             //Call attack function to spawn a hit box when space bar is pressed
             if (Input.GetKeyDown(KeyCode.Space) && attackDelay)
             {
