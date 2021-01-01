@@ -164,7 +164,7 @@ public class PlayerController : MonoBehaviour
         Vector3 playerPosition = transform.position;
         Vector3 playerDirection = transform.forward;
         Quaternion playerRotation = transform.rotation;
-        float spawnDistance = 1.5f;
+        float spawnDistance = 2.0f;
         // Set hit box spawn position
         Vector3 hitBoxPosition = playerPosition + playerDirection * spawnDistance;
         // Create new hit box
