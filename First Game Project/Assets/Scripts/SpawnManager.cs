@@ -112,7 +112,7 @@ public class SpawnManager : MonoBehaviour
        switch (wave)
         {
             case 1:
-                Wave(0, 0, 0);
+                Wave(3, 0, 0);
                 break;
             case 2:
                 Wave(3, 2, 0);
@@ -136,17 +136,17 @@ public class SpawnManager : MonoBehaviour
     //Function to spawn the wave of monsters
     private void Wave(int iArg, int nArg, int jArg)
     {
-        //Spawn 3 regular monsters
+        //Spawn regular monsters
         for (int i = 0; i < iArg; i++)
         {
             spawnMonster(0);
         }
-        //Spawn 2 fast monsters
+        //Spawn fast monsters
         for (int n = 0; n < nArg; n++)
         {
             spawnMonster(1);
         }
-        //Spawn 2 tank monsters
+        //Spawn tank monsters
         for (int j = 0; j < jArg; j++)
         {
             spawnMonster(2);
