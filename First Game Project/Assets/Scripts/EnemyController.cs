@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -10,13 +11,18 @@ public class EnemyController : MonoBehaviour
     private GameObject player;
     //Variable for enemy rigidbody 
     private Rigidbody enemyRb;
-    //Enemy health variable
-    public int health;
+    //Enemy max and current health variables
+    public int maxHealth;
+    int currentHealth;
     // spawn manager variable
     private SpawnManager spawnManager;
+    // Health bar variable
+    public Image healthBar;
     // Start is called before the first frame update
     void Start()
     {
+        // Set current health to max health
+        currentHealth = maxHealth;
         //Set enemyRb to enemy rigidbody
         enemyRb = GetComponent<Rigidbody>();
         //player to player game object
@@ -45,11 +51,15 @@ public class EnemyController : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(enemyMovement);
     }
 
+    // Function to subtract health when taking damage
     void TakeDamage(int damageAmount)
     {
-        health -= damageAmount;
-
-        if (health <= 0)
+        // Decrease current health by the damage amount
+        currentHealth -= damageAmount;
+        //  Update the health bar image according to health
+        healthBar.fillAmount = currentHealth / maxHealth;
+        // If the enemies health reaches zero destory the object
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
