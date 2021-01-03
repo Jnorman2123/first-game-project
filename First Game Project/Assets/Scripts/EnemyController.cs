@@ -16,9 +16,7 @@ public class EnemyController : MonoBehaviour
     public int health;
     // spawn manager variable
     private SpawnManager spawnManager;
-    // Health bar and health bar text variables
-    public Slider healthBar;
-    public TextMeshProUGUI healthText;
+  
     // Start is called before the first frame update
     void Start()
     {

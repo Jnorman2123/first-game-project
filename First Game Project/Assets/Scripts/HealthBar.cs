@@ -8,15 +8,17 @@ public class HealthBar : MonoBehaviour
 {
     public Slider slider;
     public TextMeshProUGUI healthBarText;
+    private float maxHealth;
 
     public void SetMaxHealth(float health)
     {
         slider.maxValue = health;
         slider.value = health;
+        maxHealth = health;
     }
     public void SetHealth(float health)
     {
         slider.value = health;
-        healthBarText.text = "Health:    " + health + "/250";
+        healthBarText.text = "Health:    " + health + "/" + maxHealth;
     }
 }
