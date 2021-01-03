@@ -12,8 +12,11 @@ public class EnemyController : MonoBehaviour
     private GameObject player;
     //Variable for enemy rigidbody 
     private Rigidbody enemyRb;
-    //Enemy health variable
-    public int health;
+    //Enemy health variables
+    public float maxHealth;
+    private float currentHealth;
+    // health bar variable
+    public HealthBar healthBar;
     // spawn manager variable
     private SpawnManager spawnManager;
   
@@ -22,6 +25,10 @@ public class EnemyController : MonoBehaviour
     {
         //Set enemyRb to enemy rigidbody
         enemyRb = GetComponent<Rigidbody>();
+        // Set enemy health
+        currentHealth = maxHealth;
+        // Set health bar to max health
+        healthBar.SetMaxHealth(maxHealth);
         //player to player game object
         player = GameObject.Find("Player");
         // Set spawnManager
@@ -51,10 +58,11 @@ public class EnemyController : MonoBehaviour
     // Function to subtract health when taking damage
     void TakeDamage(int damageAmount)
     {
-        // Decrease current health by the damage amount
-        health -= damageAmount;
+        // Decrease current health by the damage amount and decrease health on health bar
+        currentHealth -= damageAmount;
+        healthBar.SetHealth(currentHealth);
         // If the enemies health reaches zero destory the object
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
