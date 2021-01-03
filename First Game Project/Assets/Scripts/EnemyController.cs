@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class EnemyController : MonoBehaviour
 {
@@ -11,18 +12,16 @@ public class EnemyController : MonoBehaviour
     private GameObject player;
     //Variable for enemy rigidbody 
     private Rigidbody enemyRb;
-    //Enemy max and current health variables
-    public int maxHealth;
-    int currentHealth;
+    //Enemy health variable
+    public int health;
     // spawn manager variable
     private SpawnManager spawnManager;
-    // Health bar variable
-    public Image healthBar;
+    // Health bar and health bar text variables
+    public Slider healthBar;
+    public TextMeshProUGUI healthText;
     // Start is called before the first frame update
     void Start()
     {
-        // Set current health to max health
-        currentHealth = maxHealth;
         //Set enemyRb to enemy rigidbody
         enemyRb = GetComponent<Rigidbody>();
         //player to player game object
@@ -55,11 +54,9 @@ public class EnemyController : MonoBehaviour
     void TakeDamage(int damageAmount)
     {
         // Decrease current health by the damage amount
-        currentHealth -= damageAmount;
-        //  Update the health bar image according to health
-        healthBar.fillAmount = currentHealth / maxHealth;
+        health -= damageAmount;
         // If the enemies health reaches zero destory the object
-        if (currentHealth <= 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
         }
