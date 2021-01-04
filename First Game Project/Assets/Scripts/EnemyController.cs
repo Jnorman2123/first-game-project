@@ -95,10 +95,19 @@ public class EnemyController : MonoBehaviour
     // Function for enemy attack
     void EnemyAttack()
     {
-        if (gameObject.CompareTag("Regular Monster"))
+        // Determine the type of monster and if it is in attack range
+        if (gameObject.CompareTag("Regular Monster") && isInRange == true)
         {
-            
+            // Call spawn hit box with appropriate weapon type
+            SpawnEnemyHitBox("Regular Monster Sword");
+
         }
+    }
+
+    // Function to spawn the correct hit box based on monster type
+    void SpawnEnemyHitBox(string weaponType)
+    {
+
     }
 
     void EnemyIsInRange()
