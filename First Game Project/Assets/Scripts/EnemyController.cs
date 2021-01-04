@@ -19,6 +19,8 @@ public class EnemyController : MonoBehaviour
     public HealthBar healthBar;
     // spawn manager variable
     private SpawnManager spawnManager;
+    // Damage delay variable
+    private bool damageDelay = false;
   
     // Start is called before the first frame update
     void Start()
@@ -38,6 +40,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Check if the game is started and if so allow enemy to move
         if (spawnManager.gameIsStarted)
         {
             MoveEnemy();
@@ -58,13 +61,27 @@ public class EnemyController : MonoBehaviour
     // Function to subtract health when taking damage
     void TakeDamage(int damageAmount)
     {
-        // Decrease current health by the damage amount and decrease health on health bar
-        currentHealth -= damageAmount;
-        healthBar.SetHealth(currentHealth);
-        // If the enemies health reaches zero destory the object
-        if (currentHealth <= 0)
+        // Check if damage delay is false
+        if (damageDelay == false)
         {
-            Destroy(gameObject);
-        }
+            // Decrease current health by the damage amount and decrease health on health bar and start the damage delay coroutine
+            currentHealth -= damageAmount;
+            healthBar.SetHealth(currentHealth);
+            StartCoroutine("DamageDelay");
+            // If the enemies health reaches zero destory the object
+            if (currentHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }   
+    }
+
+    // Ienumerator to add a delay to how often the enemy can take damage
+    IEnumerator DamageDelay()
+    {
+        // Set damage delay to true, wait 0.5 seconds and then set damage delay to false
+        damageDelay = true;
+        yield return new WaitForSeconds(0.5f);
+        damageDelay = false;
     }
 }
