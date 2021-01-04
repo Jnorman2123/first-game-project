@@ -55,10 +55,11 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Check if the game is started and if so allow enemy to move
+        // Check if the game is started and if so allow enemy to move also determine if the enemy is in attack range
         if (spawnManager.gameIsStarted)
         {
             MoveEnemy();
+            EnemyIsInRange();
         }  
     }
 
@@ -96,16 +97,16 @@ public class EnemyController : MonoBehaviour
     {
         if (gameObject.CompareTag("Regular Monster"))
         {
-
+            
         }
     }
 
     void EnemyIsInRange()
     {
         float distance = Vector3.Distance(transform.position, player.transform.position);
-        if (distance < attackRange)
+        if (distance <= attackRange)
         {
-
+            isInRange = true;
         }
     }
     // Ienumerator to add a delay to how often the enemy can take damage
