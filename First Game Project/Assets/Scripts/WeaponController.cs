@@ -26,8 +26,8 @@ public class WeaponController : MonoBehaviour
         {
             if(damageDelay == false)
             {
-                damageDelay = true;
                 collision.gameObject.SendMessage("TakeDamage", damage);
+                damageDelay = true;
             }       
         }
     }

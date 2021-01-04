@@ -7,7 +7,7 @@ using TMPro;
 public class EnemyController : MonoBehaviour
 {
     //Variables for enemy movement
-    private float enemySpeed = 2500.0f;
+    private float enemySpeed = 2000.0f;
     //Variable for player
     private GameObject player;
     //Variable for enemy rigidbody 
