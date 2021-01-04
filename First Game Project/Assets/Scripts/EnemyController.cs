@@ -21,6 +21,10 @@ public class EnemyController : MonoBehaviour
     private SpawnManager spawnManager;
     // Damage delay variable
     private bool damageDelay = false;
+    // Attack range variables for each monster
+    private float regularAttackRange = 1.5f;
+    private float tankAttackRange = 2.0f;
+    private float fastAttackRange = 6.0f;
   
     // Start is called before the first frame update
     void Start()
@@ -74,6 +78,12 @@ public class EnemyController : MonoBehaviour
                 Destroy(gameObject);
             }
         }   
+    }
+
+    // Function for enemy attack
+    void EnemyAttack()
+    {
+
     }
 
     // Ienumerator to add a delay to how often the enemy can take damage
