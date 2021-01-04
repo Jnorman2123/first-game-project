@@ -174,7 +174,7 @@ public class PlayerController : MonoBehaviour
     private void RemoveHitBox()
     {
         // Find the hit box game object and destroy it
-        GameObject hitBoxClone = GameObject.Find("HitBox(Clone)");
+        GameObject hitBoxClone = GameObject.Find("Player Weapon(Clone)");
         Destroy(hitBoxClone);
     }
 
