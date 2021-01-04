@@ -21,10 +21,10 @@ public class EnemyController : MonoBehaviour
     private SpawnManager spawnManager;
     // Damage delay variable
     private bool damageDelay = false;
-    // Attack range variables for each monster
-    private float regularAttackRange = 1.5f;
-    private float tankAttackRange = 2.0f;
-    private float fastAttackRange = 6.0f;
+    // Attack range variable
+    private float attackRange;
+    // In range bool variable
+    private bool isInRange = false;
   
     // Start is called before the first frame update
     void Start()
@@ -39,6 +39,17 @@ public class EnemyController : MonoBehaviour
         player = GameObject.Find("Player");
         // Set spawnManager
         spawnManager = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
+        // Set attack range based on the type of monster
+        if (gameObject.CompareTag("Regular Monster"))
+        {
+            attackRange = 1.5f;
+        } else if (gameObject.CompareTag("Tank Monster"))
+        {
+            attackRange = 2.0f;
+        } else if (gameObject.CompareTag("Fast Monster"))
+        {
+            attackRange = 6.0f;
+        }
     }
 
     // Update is called once per frame
@@ -83,9 +94,20 @@ public class EnemyController : MonoBehaviour
     // Function for enemy attack
     void EnemyAttack()
     {
+        if (gameObject.CompareTag("Regular Monster"))
+        {
 
+        }
     }
 
+    void EnemyIsInRange()
+    {
+        float distance = Vector3.Distance(transform.position, player.transform.position);
+        if (distance < attackRange)
+        {
+
+        }
+    }
     // Ienumerator to add a delay to how often the enemy can take damage
     IEnumerator DamageDelay()
     {
