@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    // Variables for attack damage and damage delay
+    // Variables for attack damage
     public float damage = 50;
-    //private bool damageDelay = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,11 +23,7 @@ public class WeaponController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Regular Monster") || collision.gameObject.CompareTag("Tank Monster") || collision.gameObject.CompareTag("Fast Monster"))
         {
-            //if(damageDelay == false)
-            //{
-                collision.gameObject.SendMessage("TakeDamage", damage);
-                //damageDelay = true;
-            //}       
+            collision.gameObject.SendMessage("TakeDamage", damage);
         }
     }
 }

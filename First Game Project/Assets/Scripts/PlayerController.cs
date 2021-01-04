@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     //Vatiables for player boosts
     private float speedBoost = 1.5f;
     private float damageBoost = 2.0f;
-    //Variables for monster knock back power
+    /*//Variables for monster knock back power
     public float tankMonsterPower = 2000.0f;
     public float monsterPower = 1000.0f;
     public float fastMonsterPower = 500.0f;
@@ -23,13 +23,13 @@ public class PlayerController : MonoBehaviour
     public float tankMonsterAttack = 50.0f;
     public float monsterAttack = 25.0f;
     public float fastMonsterAttack = 12.5f;
+    */
     //Player rigidbody and renderer variables
     private Rigidbody playerRb;
     private Renderer playerRenderer;
-    //Sword and sword animation and sword offset
+    //Sword and sword animation
     GameObject sword;
     Animation swordAttack;
-    // Vector3 swordOffset;
     //hitBox game object variable and weapon controller script
     public GameObject hitBox;
     private WeaponController weaponController;
@@ -66,7 +66,6 @@ public class PlayerController : MonoBehaviour
         // Set sword and sword attack animation
         sword = transform.GetChild(2).gameObject;
         swordAttack = sword.GetComponent<Animation>();
-        //swordOffset = new Vector3(0.9375f, 0.75f, 0.375f);
     }
 
     // Update is called once per frame
@@ -76,8 +75,6 @@ public class PlayerController : MonoBehaviour
         if (spawnManager.gameIsStarted)
         {
             MovePlayer();
-            // Have sword follower the player
-            // sword.transform.position = gameObject.transform.position + swordOffset;
             //Call attack function to spawn a hit box when space bar is pressed
             if (Input.GetKeyDown(KeyCode.Space) && attackDelay)
             {
@@ -103,7 +100,8 @@ public class PlayerController : MonoBehaviour
     }
     
     //When player collides with monster the monster will knock the player away
-    private void OnCollisionEnter(Collision collision)
+    /*
+     * private void OnCollisionEnter(Collision collision)
     {
         //For each type of monster call Damage function with correct knock back power and damage to player health
         if (collision.gameObject.CompareTag("Tank Monster"))
@@ -132,6 +130,7 @@ public class PlayerController : MonoBehaviour
             spawnManager.Death();
         }
     }
+    */
     //Destroy power up when the player collides with it
     private void OnTriggerEnter(Collider other)
     {
