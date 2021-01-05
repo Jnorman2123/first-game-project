@@ -134,7 +134,7 @@ public class EnemyController : MonoBehaviour
             // Create new enemy hit box
             Instantiate(regularMonsterSword, enemyHitBoxPosition, enemyRotation);
         } else if (gameObject.CompareTag("Tank Monster")) {
-            float spawnDistance = 1.25f;
+            float spawnDistance = 1.0f;
             Vector3 enemyHitBoxPosition = enemyPosition + enemyDirection * spawnDistance;
             // Create new enemy hit box
             Instantiate(tankMonsterClub, enemyHitBoxPosition, enemyRotation);
