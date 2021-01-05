@@ -35,8 +35,9 @@ public class PlayerController : MonoBehaviour
     private SpawnManager spawnManager;
     // Variable for health bar
     public HealthBar healthBar;
-    // Variable for attack delay
-    public bool attackDelay = true;
+    // Variable for attack delay and player damage delay
+    public bool attackDelay = false;
+    public bool playerDamageDelay = false;
     
 
     // Start is called before the first frame update
@@ -67,7 +68,7 @@ public class PlayerController : MonoBehaviour
         {
             MovePlayer();
             //Call attack function to spawn a hit box when space bar is pressed
-            if (Input.GetKeyDown(KeyCode.Space) && attackDelay)
+            if (Input.GetKeyDown(KeyCode.Space) && attackDelay == false)
             {
                 StartCoroutine("Attack");
                 StartCoroutine("DelayAttack");
@@ -132,14 +133,20 @@ public class PlayerController : MonoBehaviour
     // Function to caculate the damage taken from enemies
     public void PlayerDamaged(int damageAmount)
     {
-        // Substract damage amount from current healt and set health bar
-        currentHealth -= damageAmount;
-        // If player health reaches zero destroy the player game object
-        if (currentHealth <= 0)
+        // Check to see if player damage delay is false
+        if (playerDamageDelay == false)
         {
-            Destroy(gameObject);
-        }
-        healthBar.SetHealth(currentHealth);
+            // Substract damage amount from current healt and set health bar
+            currentHealth -= damageAmount;
+            healthBar.SetHealth(currentHealth);
+            StartCoroutine("PlayerDamageDelay");
+            // If player health reaches zero destroy the player game object
+            if (currentHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
+            
+        }       
     }
 
     // Function to destroy the hitBox
@@ -162,9 +169,9 @@ public class PlayerController : MonoBehaviour
     // Add delay between attacks
     IEnumerator DelayAttack()
     {
-        attackDelay = false;
-        yield return new WaitForSeconds(0.5f);
         attackDelay = true;
+        yield return new WaitForSeconds(0.5f);
+        attackDelay = false;
     }
 
     //Double the damage of the players attack and change the player color to red
@@ -188,5 +195,14 @@ public class PlayerController : MonoBehaviour
         //After 5 seconds speed and player color goes back to normal
         moveSpeed /= speedBoost;
         playerRenderer.material = normalMaterial;
+    }
+
+    // Ienumerator to add a delay to how often the player can take damage
+    IEnumerator PlayerDamageDelay()
+    {
+        // Set damage delay to true, wait 1 second and then set damage delay to false
+        playerDamageDelay = true;
+        yield return new WaitForSeconds(1.0f);
+        playerDamageDelay = false;
     }
 }
