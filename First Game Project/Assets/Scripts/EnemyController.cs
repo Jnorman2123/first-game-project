@@ -25,7 +25,8 @@ public class EnemyController : MonoBehaviour
     // Attack range variable
     private float attackRange;
     // Regular monster weapon hit box variable
-    public GameObject regularMonsterHitBox;
+    public GameObject regularMonsterSword;
+    public GameObject tankMonsterClub;
   
     // Start is called before the first frame update
     void Start()
@@ -46,7 +47,7 @@ public class EnemyController : MonoBehaviour
             attackRange = 2.0f;
         } else if (gameObject.CompareTag("Tank Monster"))
         {
-            attackRange = 3.0f;
+            attackRange = 2.5f;
         } else if (gameObject.CompareTag("Fast Monster"))
         {
             attackRange = 6.0f;
@@ -71,6 +72,7 @@ public class EnemyController : MonoBehaviour
         // Check to see if the enemy is in range of the player and start enemy attack routine
         if (Physics.Raycast(transform.position, transform.forward, attackRange, playerMask))
         {
+            Debug.Log("In range");
             StartCoroutine("EnemyAttack");
         }
     }
@@ -130,16 +132,24 @@ public class EnemyController : MonoBehaviour
             float spawnDistance = 1.3f;
             Vector3 enemyHitBoxPosition = enemyPosition + enemyDirection * spawnDistance;
             // Create new enemy hit box
-            Instantiate(regularMonsterHitBox, enemyHitBoxPosition, enemyRotation);
+            Instantiate(regularMonsterSword, enemyHitBoxPosition, enemyRotation);
+        } else if (gameObject.CompareTag("Tank Monster")) {
+            float spawnDistance = 1.0f;
+            Vector3 enemyHitBoxPosition = enemyPosition + enemyDirection * spawnDistance;
+            // Create new enemy hit box
+            Instantiate(tankMonsterClub, enemyHitBoxPosition, enemyRotation);
         }
     }
 
     // Function to remove the enemy hit box
     private void RemoveEnemyHitBox()
     {
-        // Find the enemy hit box object
-        GameObject enemyHitBoxClone = GameObject.Find("Regular Monster Sword(Clone)");
-        Destroy(enemyHitBoxClone);
+        // Find the enemy hit box object based on the monster type
+        if (gameObject.CompareTag("Regular Monster"))
+        {
+            GameObject enemyHitBoxClone = GameObject.Find("Regular Monster Sword(Clone)");
+            Destroy(enemyHitBoxClone);
+        }   
     }
 
     // Ienumerator to add a delay to how often the enemy can take damage
