@@ -16,6 +16,9 @@ public class WeaponController : MonoBehaviour
         } else if (gameObject.CompareTag("Regular Monster Sword"))
         {
             damage = 25;
+        } else if (gameObject.CompareTag("Tank Monster Club"))
+        {
+            damage = 50;
         }
     }
 
@@ -33,7 +36,7 @@ public class WeaponController : MonoBehaviour
             {
                 collision.gameObject.SendMessage("TakeDamage", damage);
             }
-        } else if (gameObject.CompareTag("Regular Monster Sword"))
+        } else if (gameObject.CompareTag("Regular Monster Sword") || gameObject.CompareTag("Tank Monster Club"))
         {
             if (collision.gameObject.CompareTag("Player"))
             {
