@@ -70,7 +70,6 @@ public class PlayerController : MonoBehaviour
             //Call attack function to spawn a hit box when space bar is pressed
             if (Input.GetKeyDown(KeyCode.Space) && attackDelay)
             {
-                Debug.Log("attack");
                 StartCoroutine("Attack");
                 StartCoroutine("DelayAttack");
             }
