@@ -333,6 +333,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthBar: {fileID: 578924607980892188}
+  regularMonsterHitBox: {fileID: 326162698159369497, guid: 463dc1acfd8c8d34f90bd20c3c571bc9,
+    type: 3}
 --- !u!1 &4392952032559081844
 GameObject:
   m_ObjectHideFlags: 0

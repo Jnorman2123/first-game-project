@@ -25,6 +25,8 @@ public class EnemyController : MonoBehaviour
     private float attackRange;
     // In range bool variable
     private bool isInRange = false;
+    // Regular monster weapon hit box variable
+    public GameObject regularMonsterHitBox;
   
     // Start is called before the first frame update
     void Start()
@@ -42,7 +44,7 @@ public class EnemyController : MonoBehaviour
         // Set attack range based on the type of monster
         if (gameObject.CompareTag("Regular Monster"))
         {
-            attackRange = 1.5f;
+            attackRange = 2.5f;
         } else if (gameObject.CompareTag("Tank Monster"))
         {
             attackRange = 2.0f;
@@ -95,27 +97,46 @@ public class EnemyController : MonoBehaviour
     // Function for enemy attack
     void EnemyAttack()
     {
-        // Determine the type of monster and if it is in attack range
-        if (gameObject.CompareTag("Regular Monster") && isInRange == true)
+        // Determine if the monster is in attack range
+        if (isInRange == true)
         {
             // Call spawn hit box with appropriate weapon type
-            SpawnEnemyHitBox("Regular Monster Sword");
+            SpawnEnemyHitBox();
 
         }
     }
 
     // Function to spawn the correct hit box based on monster type
-    void SpawnEnemyHitBox(string weaponType)
+    void SpawnEnemyHitBox()
     {
-
+        // Get enemy position vector3 and rotation
+        Vector3 enemyPosition = transform.position;
+        Vector3 enemyDirection = transform.forward;
+        Quaternion enemyRotation = transform.rotation;
+        // Set enemy hit box position based on type of monster
+        if (gameObject.CompareTag("Regular Monster"))
+        {
+            float spawnDistance = 1.0f;
+            Vector3 enemyHitBoxPosition = enemyPosition + enemyDirection * spawnDistance;
+            // Create new enemy hit box
+            Instantiate(regularMonsterHitBox, enemyHitBoxPosition, enemyRotation);
+        }
     }
 
+    // Function that checks to see if the enemy is within attack range of the player
     void EnemyIsInRange()
     {
+        // Determine the distance between the enemy and player
         float distance = Vector3.Distance(transform.position, player.transform.position);
+        // If in range change in range to true and attack else in range is false
         if (distance <= attackRange)
         {
             isInRange = true;
+            Debug.Log("is in range");
+            EnemyAttack();
+        } else
+        {
+            isInRange = false;
         }
     }
     // Ienumerator to add a delay to how often the enemy can take damage
