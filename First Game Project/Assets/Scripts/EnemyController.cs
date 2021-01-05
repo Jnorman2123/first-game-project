@@ -31,6 +31,9 @@ public class EnemyController : MonoBehaviour
     // Regular monster weapon hit box variable
     public GameObject regularMonsterSword;
     public GameObject tankMonsterClub;
+    // Variables for tank club and club attack animation
+    GameObject club;
+    Animation clubAttack;
   
     // Start is called before the first frame update
     void Start()
@@ -50,8 +53,11 @@ public class EnemyController : MonoBehaviour
         {
             attackRange = 2.0f;
         } else if (gameObject.CompareTag("Tank Monster"))
+            // if tank monster set club game object and club attack animation
         {
             attackRange = 2.5f;
+            club = transform.GetChild(2).gameObject;
+            clubAttack = club.GetComponent<Animation>();
         } else if (gameObject.CompareTag("Fast Monster"))
         {
             attackRange = 6.0f;
@@ -116,6 +122,10 @@ public class EnemyController : MonoBehaviour
         // Call spawn hit box then wait 0.1 seconds and remove the hit box
         if (enemyAttackDelay == false)
         {
+            if (gameObject.CompareTag("Tank Monster"))
+            {
+                clubAttack.Play("Club_Attack");
+            }
             SpawnEnemyHitBox();
             StartCoroutine("EnemyAttackDelay");
             yield return new WaitForSeconds(0.1f);

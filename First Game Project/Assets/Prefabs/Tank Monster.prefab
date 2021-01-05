@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 7459094984859254381}
   - component: {fileID: 6232105376768971055}
   - component: {fileID: 8531118029544131474}
+  - component: {fileID: 86749322}
   m_Layer: 0
   m_Name: Club Shaft
   m_TagString: Untagged
@@ -100,14 +101,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693408031573665357}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7, y: -0.05, z: 0.4}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.7, y: -0.05, z: 0.7}
   m_LocalScale: {x: 0.15, y: 0.75, z: 0.15}
   m_Children:
   - {fileID: 4190008235542210801}
   m_Father: {fileID: 2219729259302827525}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &7459094984859254381
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -168,6 +169,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!111 &86749322
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693408031573665357}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: a1d2a34ab691e3c41b78349f8fcf6531, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &2051580484831430189
 GameObject:
   m_ObjectHideFlags: 0
