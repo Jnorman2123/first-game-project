@@ -19,12 +19,11 @@ public class EnemyController : MonoBehaviour
     public HealthBar healthBar;
     // spawn manager variable
     private SpawnManager spawnManager;
-    // Damage delay variable
+    // Damage delay variable and Enemy attack delay
     private bool damageDelay = false;
+    private bool enemyAttackDelay = false;
     // Attack range variable
     private float attackRange;
-    // In range bool variable
-    // private bool isInRange = false;
     // Regular monster weapon hit box variable
     public GameObject regularMonsterHitBox;
   
@@ -57,11 +56,10 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Check if the game is started and if so allow enemy to move also determine if the enemy is in attack range
+        // Check if the game is started and if so allow enemy to move
         if (spawnManager.gameIsStarted)
         {
             // MoveEnemy();
-            // EnemyIsInRange();
         }  
     }
 
@@ -70,9 +68,12 @@ public class EnemyController : MonoBehaviour
     {
         // Get the player layer mask
         LayerMask playerMask = LayerMask.GetMask("Player");
-        // Check to see if the enemy is in range of the player
+        // Check to see if the enemy is in range of the player and set is in range to true
         if (Physics.Raycast(transform.position, transform.forward, attackRange, playerMask))
         {
+            StartCoroutine("EnemyAttack");
+            StartCoroutine("EnemyAttackDelay");
+            // SpawnEnemyHitBox();
             Debug.Log("Player is in attack range.");
         }
     }
@@ -110,9 +111,12 @@ public class EnemyController : MonoBehaviour
     IEnumerator EnemyAttack()
     {
         // Call spawn hit box then wait 0.1 seconds and remove the hit box
-        SpawnEnemyHitBox();
-        yield return new WaitForSeconds(0.1f);
-        RemoveEnemyHitBox();
+        if (enemyAttackDelay == false)
+        {
+            SpawnEnemyHitBox();
+            yield return new WaitForSeconds(0.1f);
+            RemoveEnemyHitBox();
+        }
     }
 
     // Function to spawn the correct hit box based on monster type
@@ -140,21 +144,6 @@ public class EnemyController : MonoBehaviour
         Destroy(enemyHitBoxClone);
     }
 
-    // Function that checks to see if the enemy is within attack range of the player and the player is in front of the enemy
-    // void EnemyIsInRange()
-    // {
-        /* // Determine the distance between the enemy and player
-        float distance = Vector3.Distance(transform.position, player.transform.position);
-        // If in range change in range to true and attack else in range is false
-        if (distance <= attackRange)
-        {
-            isInRange = true;
-            StartCoroutine("EnemyAttack");
-        } else
-        {
-            isInRange = false;
-        } */
-    // }
     // Ienumerator to add a delay to how often the enemy can take damage
     IEnumerator DamageDelay()
     {
@@ -162,5 +151,14 @@ public class EnemyController : MonoBehaviour
         damageDelay = true;
         yield return new WaitForSeconds(0.5f);
         damageDelay = false;
+    }
+
+    // Ienumerator to add a delay to the enemy attack
+    IEnumerator EnemyAttackDelay()
+    {
+        // Set enemy attack delay to true, wait 0.5 seconds and then set enemy attack delay to false
+        enemyAttackDelay = true;
+        yield return new WaitForSeconds(0.5f);
+        enemyAttackDelay = false;
     }
 }
