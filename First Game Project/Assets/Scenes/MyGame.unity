@@ -2131,12 +2131,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnSpeed: 200
   moveSpeed: 12.5
-  tankMonsterPower: 2000
-  monsterPower: 1000
-  fastMonsterPower: 500
-  tankMonsterAttack: 50
-  monsterAttack: 25
-  fastMonsterAttack: 12.5
   hitBox: {fileID: 5344631733462841249, guid: 22a71668b2e60ba45a88772ebfbe3dca, type: 3}
   maxHealth: 250
   currentHealth: 0

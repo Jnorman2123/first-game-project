@@ -10,7 +10,8 @@ TagManager:
   - Health Potion
   - Damage Boost
   - Speed Boost
-  - Weapon
+  - Player Weapon
+  - Regulare Monster Sword
   layers:
   - Default
   - TransparentFX
