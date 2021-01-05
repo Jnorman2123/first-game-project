@@ -26,7 +26,6 @@ public class RestartButton : MonoBehaviour
 
     void RestartGame()
     {
-        Debug.Log("restart game");
         spawnManager.RestartGame();
     }
 }

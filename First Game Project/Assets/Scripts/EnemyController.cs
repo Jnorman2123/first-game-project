@@ -43,7 +43,7 @@ public class EnemyController : MonoBehaviour
         // Set attack range based on the type of monster
         if (gameObject.CompareTag("Regular Monster"))
         {
-            attackRange = 2.5f;
+            attackRange = 2.0f;
         } else if (gameObject.CompareTag("Tank Monster"))
         {
             attackRange = 3.0f;

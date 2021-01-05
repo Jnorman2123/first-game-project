@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     // Variable for health bar
     public HealthBar healthBar;
     // Variable for attack delay and player damage delay
-    public bool attackDelay = false;
+    public bool attackDelay = true;
     public bool playerDamageDelay = false;
     
 
@@ -68,8 +68,9 @@ public class PlayerController : MonoBehaviour
         {
             MovePlayer();
             //Call attack function to spawn a hit box when space bar is pressed
-            if (Input.GetKeyDown(KeyCode.Space) && attackDelay == false)
+            if (Input.GetKeyDown(KeyCode.Space) && attackDelay)
             {
+                Debug.Log("attack");
                 StartCoroutine("Attack");
                 StartCoroutine("DelayAttack");
             }
@@ -169,9 +170,9 @@ public class PlayerController : MonoBehaviour
     // Add delay between attacks
     IEnumerator DelayAttack()
     {
-        attackDelay = true;
-        yield return new WaitForSeconds(0.5f);
         attackDelay = false;
+        yield return new WaitForSeconds(0.5f);
+        attackDelay = true;
     }
 
     //Double the damage of the players attack and change the player color to red

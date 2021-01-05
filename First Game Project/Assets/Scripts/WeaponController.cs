@@ -38,7 +38,6 @@ public class WeaponController : MonoBehaviour
             if (collision.gameObject.CompareTag("Player"))
             {
                 collision.gameObject.SendMessage("PlayerDamaged", damage);
-                Debug.Log("hit");
             }
         } 
     }
