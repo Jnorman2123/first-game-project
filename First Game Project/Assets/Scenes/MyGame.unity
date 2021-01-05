@@ -2033,7 +2033,7 @@ GameObject:
   - component: {fileID: 976398205}
   - component: {fileID: 976398209}
   - component: {fileID: 976398210}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2139,6 +2139,7 @@ MonoBehaviour:
   speedMaterial: {fileID: 2100000, guid: 16c48457722e08f4194bf4f420ce814f, type: 2}
   healthBar: {fileID: 1871218186}
   attackDelay: 1
+  playerDamageDelay: 0
 --- !u!54 &976398210
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2831,6 +2832,85 @@ Transform:
   m_Father: {fileID: 1751303311}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1954996067
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2219729259302827525, guid: 5ccdc77c60252af43afb2cb4115ca319,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219729259302827525, guid: 5ccdc77c60252af43afb2cb4115ca319,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219729259302827525, guid: 5ccdc77c60252af43afb2cb4115ca319,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219729259302827525, guid: 5ccdc77c60252af43afb2cb4115ca319,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219729259302827525, guid: 5ccdc77c60252af43afb2cb4115ca319,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219729259302827525, guid: 5ccdc77c60252af43afb2cb4115ca319,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219729259302827525, guid: 5ccdc77c60252af43afb2cb4115ca319,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219729259302827525, guid: 5ccdc77c60252af43afb2cb4115ca319,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219729259302827525, guid: 5ccdc77c60252af43afb2cb4115ca319,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219729259302827525, guid: 5ccdc77c60252af43afb2cb4115ca319,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219729259302827525, guid: 5ccdc77c60252af43afb2cb4115ca319,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219729259302827545, guid: 5ccdc77c60252af43afb2cb4115ca319,
+        type: 3}
+      propertyPath: m_Name
+      value: Tank Monster
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334843223148656093, guid: 5ccdc77c60252af43afb2cb4115ca319,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334843223148656093, guid: 5ccdc77c60252af43afb2cb4115ca319,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5ccdc77c60252af43afb2cb4115ca319, type: 3}
 --- !u!1 &2106890644
 GameObject:
   m_ObjectHideFlags: 0

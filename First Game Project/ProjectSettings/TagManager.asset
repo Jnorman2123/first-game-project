@@ -11,7 +11,9 @@ TagManager:
   - Damage Boost
   - Speed Boost
   - Player Weapon
-  - Regulare Monster Sword
+  - Undefined
+  - Regular Monster Sword
+  - Tank Monster Club
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Player
   - 
   - 
   - 

@@ -134,7 +134,7 @@ public class EnemyController : MonoBehaviour
             // Create new enemy hit box
             Instantiate(regularMonsterSword, enemyHitBoxPosition, enemyRotation);
         } else if (gameObject.CompareTag("Tank Monster")) {
-            float spawnDistance = 1.0f;
+            float spawnDistance = 1.25f;
             Vector3 enemyHitBoxPosition = enemyPosition + enemyDirection * spawnDistance;
             // Create new enemy hit box
             Instantiate(tankMonsterClub, enemyHitBoxPosition, enemyRotation);
@@ -149,7 +149,11 @@ public class EnemyController : MonoBehaviour
         {
             GameObject enemyHitBoxClone = GameObject.Find("Regular Monster Sword(Clone)");
             Destroy(enemyHitBoxClone);
-        }   
+        } /*else if (gameObject.CompareTag("Tank Monster"))
+        {
+            GameObject enemyHitBoxClone = GameObject.Find("Tank Monster Club(Clone)");
+            Destroy(enemyHitBoxClone);
+        } */
     }
 
     // Ienumerator to add a delay to how often the enemy can take damage
