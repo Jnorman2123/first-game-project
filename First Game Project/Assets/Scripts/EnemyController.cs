@@ -68,13 +68,10 @@ public class EnemyController : MonoBehaviour
     {
         // Get the player layer mask
         LayerMask playerMask = LayerMask.GetMask("Player");
-        // Check to see if the enemy is in range of the player and set is in range to true
+        // Check to see if the enemy is in range of the player and start enemy attack routine
         if (Physics.Raycast(transform.position, transform.forward, attackRange, playerMask))
         {
             StartCoroutine("EnemyAttack");
-            StartCoroutine("EnemyAttackDelay");
-            // SpawnEnemyHitBox();
-            Debug.Log("Player is in attack range.");
         }
     }
 
@@ -114,6 +111,7 @@ public class EnemyController : MonoBehaviour
         if (enemyAttackDelay == false)
         {
             SpawnEnemyHitBox();
+            StartCoroutine("EnemyAttackDelay");
             yield return new WaitForSeconds(0.1f);
             RemoveEnemyHitBox();
         }
@@ -158,7 +156,7 @@ public class EnemyController : MonoBehaviour
     {
         // Set enemy attack delay to true, wait 0.5 seconds and then set enemy attack delay to false
         enemyAttackDelay = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
         enemyAttackDelay = false;
     }
 }
