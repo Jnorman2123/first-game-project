@@ -22,6 +22,10 @@ public class EnemyController : MonoBehaviour
     // Damage delay variable and Enemy attack delay
     private bool damageDelay = false;
     private bool enemyAttackDelay = false;
+    // Variables for each monsters attack delay
+    private float regularAttackDelay = 1.0f;
+    private float tankAttackDelay = 1.5f;
+    private float fastAttackDelay = 3.0f;
     // Attack range variable
     private float attackRange;
     // Regular monster weapon hit box variable
@@ -149,11 +153,11 @@ public class EnemyController : MonoBehaviour
         {
             GameObject enemyHitBoxClone = GameObject.Find("Regular Monster Sword(Clone)");
             Destroy(enemyHitBoxClone);
-        } /*else if (gameObject.CompareTag("Tank Monster"))
+        } else if (gameObject.CompareTag("Tank Monster"))
         {
             GameObject enemyHitBoxClone = GameObject.Find("Tank Monster Club(Clone)");
             Destroy(enemyHitBoxClone);
-        } */
+        } 
     }
 
     // Ienumerator to add a delay to how often the enemy can take damage
@@ -170,7 +174,17 @@ public class EnemyController : MonoBehaviour
     {
         // Set enemy attack delay to true, wait 0.5 seconds and then set enemy attack delay to false
         enemyAttackDelay = true;
-        yield return new WaitForSeconds(1.0f);
+        if (gameObject.CompareTag("Regular Monster"))
+        {
+            yield return new WaitForSeconds(regularAttackDelay);
+        } else if (gameObject.CompareTag("Tank Monster"))
+        {
+            yield return new WaitForSeconds(tankAttackDelay);
+        } else if (gameObject.CompareTag("Fast Monster"))
+        {
+            yield return new WaitForSeconds(fastAttackDelay);
+        }
+
         enemyAttackDelay = false;
     }
 }
