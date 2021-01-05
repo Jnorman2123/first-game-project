@@ -15,15 +15,6 @@ public class PlayerController : MonoBehaviour
     //Vatiables for player boosts
     private float speedBoost = 1.5f;
     private float damageBoost = 2.0f;
-    /*//Variables for monster knock back power
-    public float tankMonsterPower = 2000.0f;
-    public float monsterPower = 1000.0f;
-    public float fastMonsterPower = 500.0f;
-    //Variables for monster attack power
-    public float tankMonsterAttack = 50.0f;
-    public float monsterAttack = 25.0f;
-    public float fastMonsterAttack = 12.5f;
-    */
     //Player rigidbody and renderer variables
     private Rigidbody playerRb;
     private Renderer playerRenderer;
@@ -99,38 +90,6 @@ public class PlayerController : MonoBehaviour
         transform.eulerAngles = new Vector3(0.0f, turnPlayer, 0.0f); 
     }
     
-    //When player collides with monster the monster will knock the player away
-    /*
-     * private void OnCollisionEnter(Collision collision)
-    {
-        //For each type of monster call Damage function with correct knock back power and damage to player health
-        if (collision.gameObject.CompareTag("Tank Monster"))
-        {
-            Damage(collision.gameObject, tankMonsterPower, tankMonsterAttack);
-        } else if (collision.gameObject.CompareTag("Regular Monster"))
-        {
-            Damage(collision.gameObject, monsterPower, monsterAttack);
-        } else if (collision.gameObject.CompareTag("Fast Monster"))
-        {
-            Damage(collision.gameObject, fastMonsterPower, fastMonsterAttack);
-        }
-    }
-    //Method to determine knock back power based on monster type
-    void Damage(GameObject collision, float monsterPower, float monsterAttack)
-    {
-        //Knock the player away from the monster
-        Vector3 awayFromMonster = (transform.position - collision.gameObject.transform.position);
-        playerRb.AddForce(awayFromMonster * monsterPower, ForceMode.Impulse);
-        //Damage the player
-        currentHealth -= monsterAttack;
-        healthBar.SetHealth(currentHealth);
-        if (currentHealth <= 0)
-        {
-            transform.position = startPosition;
-            spawnManager.Death();
-        }
-    }
-    */
     //Destroy power up when the player collides with it
     private void OnTriggerEnter(Collider other)
     {
@@ -168,6 +127,19 @@ public class PlayerController : MonoBehaviour
         Vector3 hitBoxPosition = playerPosition + playerDirection * spawnDistance;
         // Create new hit box
         Instantiate(hitBox, hitBoxPosition, playerRotation);
+    }
+
+    // Function to caculate the damage taken from enemies
+    public void PlayerDamaged(int damageAmount)
+    {
+        // Substract damage amount from current healt and set health bar
+        currentHealth -= damageAmount;
+        // If player health reaches zero destroy the player game object
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+        healthBar.SetHealth(currentHealth);
     }
 
     // Function to destroy the hitBox

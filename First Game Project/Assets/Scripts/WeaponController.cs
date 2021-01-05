@@ -5,12 +5,18 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour
 {
     // Variables for attack damage
-    public float damage = 50;
+    public float damage;
 
     // Start is called before the first frame update
     void Start()
     {
- 
+        if (gameObject.CompareTag("Player Weapon"))
+        {
+            damage = 50;
+        } else if (gameObject.CompareTag("Regular Monster Sword"))
+        {
+            damage = 25;
+        }
     }
 
     // Update is called once per frame
@@ -27,6 +33,13 @@ public class WeaponController : MonoBehaviour
             {
                 collision.gameObject.SendMessage("TakeDamage", damage);
             }
-        }       
+        } else if (gameObject.CompareTag("Regular Monster Sword"))
+        {
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                collision.gameObject.SendMessage("PlayerDamaged", damage);
+                Debug.Log("hit");
+            }
+        } 
     }
 }
