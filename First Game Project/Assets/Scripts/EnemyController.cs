@@ -127,7 +127,7 @@ public class EnemyController : MonoBehaviour
         // Set enemy hit box position based on type of monster
         if (gameObject.CompareTag("Regular Monster"))
         {
-            float spawnDistance = 1.0f;
+            float spawnDistance = 1.3f;
             Vector3 enemyHitBoxPosition = enemyPosition + enemyDirection * spawnDistance;
             // Create new enemy hit box
             Instantiate(regularMonsterHitBox, enemyHitBoxPosition, enemyRotation);
