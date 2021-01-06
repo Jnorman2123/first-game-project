@@ -50,6 +50,7 @@ public class FireballController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.SendMessage("PlayerDamaged", fireballDamage);
+            Destroy(gameObject);
         }
     }
 }
