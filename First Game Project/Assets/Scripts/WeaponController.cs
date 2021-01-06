@@ -5,20 +5,24 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour
 {
     // Variables for attack damage
-    public float damage;
+    private float damage;
+    // Variables for each character damage
+    public float playerDamage = 50.0f;
+    private float regularMonsterDamage = 25.0f;
+    private float tankMonsterDamage = 50.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         if (gameObject.CompareTag("Player Weapon"))
         {
-            damage = 50;
+            damage = playerDamage;
         } else if (gameObject.CompareTag("Regular Monster Sword"))
         {
-            damage = 25;
+            damage = regularMonsterDamage;
         } else if (gameObject.CompareTag("Tank Monster Club"))
         {
-            damage = 50;
+            damage = tankMonsterDamage;
         }
     }
 

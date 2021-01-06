@@ -72,7 +72,7 @@ public class SpawnManager : MonoBehaviour
         titleScreen.gameObject.SetActive(false);
         cameraMode = 1;
         StartCoroutine(CameraChange());
-        weaponController.damage = 50;
+        weaponController.playerDamage = 50;
     }
     // Function to restart the game
     public void RestartGame()

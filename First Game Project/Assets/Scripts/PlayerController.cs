@@ -178,11 +178,11 @@ public class PlayerController : MonoBehaviour
     IEnumerator DamageBoost()
     {
         //Weapon damage is doubled and player changes color to red
-        weaponController.damage *= damageBoost;
+        weaponController.playerDamage *= damageBoost;
         playerRenderer.material = damageMaterial;
         yield return new WaitForSeconds(5.0f);
         //After 5 seconds damage and player color goes back to normal
-        weaponController.damage /= damageBoost;
+        weaponController.playerDamage /= damageBoost;
         playerRenderer.material = normalMaterial;
     }
     //Increase the speed of the players movement and change player color to yellow

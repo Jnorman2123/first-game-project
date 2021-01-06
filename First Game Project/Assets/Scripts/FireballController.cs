@@ -6,8 +6,9 @@ public class FireballController : MonoBehaviour
 {
     // Rigidbody variable for fireball
     private Rigidbody fireballRigidbody;
-    // Variable for fireball speed
+    // Variable for fireball speed and damage
     private float fireballSpeed = 20.0f;
+    private float fireballDamage = 10.0f;
     // Variable for fireball life span
     private float fireballLifeSpan = 1.0f;
 
@@ -39,5 +40,14 @@ public class FireballController : MonoBehaviour
     {
         yield return new WaitForSeconds(fireballLifeSpan);
         Destroy(gameObject);
+    }
+
+    // On collision with player do damage
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.SendMessage("PlayerDamaged", fireballDamage);
+        }
     }
 }
