@@ -61,7 +61,7 @@ public class EnemyController : MonoBehaviour
             clubAttack = club.GetComponent<Animation>();
         } else if (gameObject.CompareTag("Fast Monster"))
         {
-            attackRange = 6.0f;
+            attackRange = 8.0f;
         }
     }
 
