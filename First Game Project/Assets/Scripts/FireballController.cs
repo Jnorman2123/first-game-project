@@ -7,7 +7,10 @@ public class FireballController : MonoBehaviour
     // Rigidbody variable for fireball
     private Rigidbody fireballRigidbody;
     // Variable for fireball speed
-    public float fireballSpeed = 10.0f;
+    private float fireballSpeed = 20.0f;
+    // Variable for fireball life span
+    private float fireballLifeSpan = 1.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +22,7 @@ public class FireballController : MonoBehaviour
     void Update()
     {
         MoveFireball();
+        StartCoroutine("DestroyFireball");
     }
 
     // Function to move fireball forward
@@ -28,5 +32,12 @@ public class FireballController : MonoBehaviour
         Vector3 fireballMovement = Vector3.forward;
         // Move fireball according to speed
         fireballRigidbody.AddForce(fireballMovement * fireballSpeed * Time.deltaTime, ForceMode.Impulse);
+    }
+
+    // Ienumerator to despawn fireball after a set time
+    IEnumerator DestroyFireball()
+    {
+        yield return new WaitForSeconds(fireballLifeSpan);
+        Destroy(gameObject);
     }
 }
