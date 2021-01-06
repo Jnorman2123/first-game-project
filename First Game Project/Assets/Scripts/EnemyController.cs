@@ -25,12 +25,13 @@ public class EnemyController : MonoBehaviour
     // Variables for each monsters attack delay
     private float regularAttackDelay = 1.0f;
     private float tankAttackDelay = 1.5f;
-    private float fastAttackDelay = 3.0f;
+    private float fastAttackDelay = 2.0f;
     // Attack range variable
     private float attackRange;
-    // Regular monster weapon hit box variable
+    // Each monster weapon hit box variable
     public GameObject regularMonsterSword;
     public GameObject tankMonsterClub;
+    public GameObject fastMonsterFireball;
     // Variables for tank club and club attack animation
     GameObject club;
     Animation clubAttack;
@@ -152,6 +153,12 @@ public class EnemyController : MonoBehaviour
             Vector3 enemyHitBoxPosition = enemyPosition + enemyDirection * spawnDistance;
             // Create new enemy hit box
             Instantiate(tankMonsterClub, enemyHitBoxPosition, enemyRotation);
+        } else if (gameObject.CompareTag("Fast Monster"))
+        {
+            float spawnDistance = 1.0f;
+            Vector3 enemyHitBoxPosition = enemyPosition + enemyDirection * spawnDistance;
+            // Create new enemy hit box
+            Instantiate(fastMonsterFireball, enemyHitBoxPosition, enemyRotation);
         }
     }
 

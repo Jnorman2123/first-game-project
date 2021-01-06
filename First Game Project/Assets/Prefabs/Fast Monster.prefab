@@ -434,6 +434,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   healthBar: {fileID: 4160046249351476590}
+  regularMonsterSword: {fileID: 326162698159369497, guid: 463dc1acfd8c8d34f90bd20c3c571bc9,
+    type: 3}
+  tankMonsterClub: {fileID: 1066248268278290009, guid: dd2bccb86fa6e4441a5e3c66441cd9fd,
+    type: 3}
+  fastMonsterFireball: {fileID: 1780874607822186980, guid: 75274f16cc1ba4c4dad11adf10cd8cec,
+    type: 3}
 --- !u!1 &6891377948397503284
 GameObject:
   m_ObjectHideFlags: 0

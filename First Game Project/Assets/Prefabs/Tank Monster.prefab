@@ -430,6 +430,8 @@ MonoBehaviour:
     type: 3}
   tankMonsterClub: {fileID: 1066248268278290009, guid: dd2bccb86fa6e4441a5e3c66441cd9fd,
     type: 3}
+  fastMonsterFireball: {fileID: 1780874607822186980, guid: 75274f16cc1ba4c4dad11adf10cd8cec,
+    type: 3}
 --- !u!1 &3733338036937622890
 GameObject:
   m_ObjectHideFlags: 0
