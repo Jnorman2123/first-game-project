@@ -71,7 +71,7 @@ public class EnemyController : MonoBehaviour
         // Check if the game is started and if so allow enemy to move
         if (spawnManager.gameIsStarted)
         {
-            // MoveEnemy();
+            MoveEnemy();
         }  
     }
 
@@ -83,7 +83,7 @@ public class EnemyController : MonoBehaviour
         // Check to see if the enemy is in range of the player and start enemy attack routine
         if (Physics.Raycast(transform.position, transform.forward, attackRange, playerMask))
         {
-            Debug.Log("In range");
+            enemySpeed = 0;
             StartCoroutine("EnemyAttack");
         }
     }

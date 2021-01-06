@@ -14,16 +14,7 @@ public class WeaponController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (gameObject.CompareTag("Player Weapon"))
-        {
-            damage = playerDamage;
-        } else if (gameObject.CompareTag("Regular Monster Sword"))
-        {
-            damage = regularMonsterDamage;
-        } else if (gameObject.CompareTag("Tank Monster Club"))
-        {
-            damage = tankMonsterDamage;
-        }
+        
     }
 
     // Update is called once per frame
@@ -36,6 +27,7 @@ public class WeaponController : MonoBehaviour
     {
         if (gameObject.CompareTag("Player Weapon"))
         {
+            damage = playerDamage;
             if (collision.gameObject.CompareTag("Regular Monster") || collision.gameObject.CompareTag("Tank Monster") || collision.gameObject.CompareTag("Fast Monster"))
             {
                 collision.gameObject.SendMessage("TakeDamage", damage);
@@ -44,8 +36,16 @@ public class WeaponController : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Player"))
             {
+                damage = regularMonsterDamage;
                 collision.gameObject.SendMessage("PlayerDamaged", damage);
             }
-        } 
+        } else if (gameObject.CompareTag("Tank Monster Club"))
+        {
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                damage = tankMonsterDamage;
+                collision.gameObject.SendMessage("PlayerDamaged", damage);
+            }
+        }
     }
 }

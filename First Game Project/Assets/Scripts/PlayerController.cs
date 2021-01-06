@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour
         // Check to see if player damage delay is false
         if (playerDamageDelay == false)
         {
-            // Substract damage amount from current healt and set health bar
+            // Substract damage amount from current health and set health bar
             currentHealth -= damageAmount;
             healthBar.SetHealth(currentHealth);
             StartCoroutine("PlayerDamageDelay");
