@@ -85,6 +85,9 @@ public class EnemyController : MonoBehaviour
         {
             enemySpeed = 0;
             StartCoroutine("EnemyAttack");
+        } else if (!Physics.Raycast(transform.position, transform.forward, attackRange, playerMask))
+        {
+            enemySpeed = 2000.0f;
         }
     }
 
