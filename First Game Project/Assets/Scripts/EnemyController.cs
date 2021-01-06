@@ -84,7 +84,7 @@ public class EnemyController : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.forward, attackRange, playerMask))
         {
             enemySpeed = 0;
-            StartCoroutine("EnemyAttack");
+            EnemyAttack();
         } else if (!Physics.Raycast(transform.position, transform.forward, attackRange, playerMask))
         {
             enemySpeed = 2000.0f;
@@ -120,8 +120,8 @@ public class EnemyController : MonoBehaviour
         }   
     }
 
-    // CoRoutine for enemy attack
-    IEnumerator EnemyAttack()
+    // Function for enemy attack
+    private void EnemyAttack()
     {
         // Call spawn hit box then wait 0.1 seconds and remove the hit box
         if (enemyAttackDelay == false)
@@ -132,8 +132,6 @@ public class EnemyController : MonoBehaviour
             }
             SpawnEnemyHitBox();
             StartCoroutine("EnemyAttackDelay");
-            yield return new WaitForSeconds(0.1f);
-            RemoveEnemyHitBox();
         }
     }
 
@@ -163,21 +161,6 @@ public class EnemyController : MonoBehaviour
             // Create new enemy hit box
             Instantiate(fastMonsterFireball, enemyHitBoxPosition, enemyRotation);
         }
-    }
-
-    // Function to remove the enemy hit box
-    private void RemoveEnemyHitBox()
-    {
-        // Find the enemy hit box object based on the monster type
-        if (gameObject.CompareTag("Regular Monster"))
-        {
-            GameObject enemyHitBoxClone = GameObject.Find("Regular Monster Sword(Clone)");
-            Destroy(enemyHitBoxClone);
-        } else if (gameObject.CompareTag("Tank Monster"))
-        {
-            GameObject enemyHitBoxClone = GameObject.Find("Tank Monster Club(Clone)");
-            Destroy(enemyHitBoxClone);
-        } 
     }
 
     // Ienumerator to add a delay to how often the enemy can take damage

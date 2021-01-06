@@ -20,7 +20,10 @@ public class WeaponController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!gameObject.CompareTag("Player Weapon"))
+        {
+            StartCoroutine("DestroyEnemyWeapon");
+        }
     }
     //On collision with monster do damage to monster
     private void OnCollisionEnter(Collision collision)
@@ -47,5 +50,12 @@ public class WeaponController : MonoBehaviour
                 collision.gameObject.SendMessage("PlayerDamaged", damage);
             }
         }
+    }
+
+    // Function to destroy the enemy weapon after life span is up
+    IEnumerator DestroyEnemyWeapon()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Destroy(gameObject);
     }
 }
