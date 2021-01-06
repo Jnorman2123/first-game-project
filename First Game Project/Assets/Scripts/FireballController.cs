@@ -32,7 +32,7 @@ public class FireballController : MonoBehaviour
     private void MoveFireball()
     {
         // New vector 3 to set move direction to forward
-        Vector3 fireballMovement = Vector3.forward;
+        Vector3 fireballMovement = gameObject.transform.forward;
         // Move fireball according to speed
         fireballRigidbody.AddForce(fireballMovement * fireballSpeed * Time.deltaTime, ForceMode.Impulse);
     }
