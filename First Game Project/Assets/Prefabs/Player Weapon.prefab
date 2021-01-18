@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5344631733462841279}
   - component: {fileID: 2956672281863617347}
   - component: {fileID: -321567819988447293}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player Weapon
   m_TagString: Player Weapon
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6af578a20a1db647b5fbc40914f1782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
+  playerDamage: 50
 --- !u!54 &-321567819988447293
 Rigidbody:
   m_ObjectHideFlags: 0

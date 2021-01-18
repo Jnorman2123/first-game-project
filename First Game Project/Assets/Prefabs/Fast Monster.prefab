@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7021741857660839326}
   - component: {fileID: 5278173630681870810}
   - component: {fileID: 5713626705367456789}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 3807542357303170754}
   - component: {fileID: 2316182203592715274}
   - component: {fileID: 4917505591166208516}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 3391999804718734918}
   - component: {fileID: 7554510562132148836}
   - component: {fileID: 1339731566682526904}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Health Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 6430753357680938622}
   - component: {fileID: 878101840}
   - component: {fileID: 5349346793980386837}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fast Monster
   m_TagString: Fast Monster
   m_Icon: {fileID: 0}
@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 8929113298110546464}
   - component: {fileID: 3657307689400549560}
   - component: {fileID: 8280568652849408174}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -526,7 +526,7 @@ GameObject:
   - component: {fileID: 3502756239466783022}
   - component: {fileID: 8861867493758535039}
   - component: {fileID: 6814081895068683148}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -619,7 +619,7 @@ GameObject:
   - component: {fileID: 1300743930130688483}
   - component: {fileID: 4160046249351476590}
   - component: {fileID: 2801702939155079348}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,7 +731,7 @@ GameObject:
   - component: {fileID: 3821674440778504496}
   - component: {fileID: 4290457395291738276}
   - component: {fileID: 1566171996994691580}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}

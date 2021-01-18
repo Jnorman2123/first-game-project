@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2178814889195584449}
   - component: {fileID: 3177014431765301355}
   - component: {fileID: 8127570141184609168}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 6232105376768971055}
   - component: {fileID: 8531118029544131474}
   - component: {fileID: 86749322}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Club Shaft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 6394969872518277923}
   - component: {fileID: 1505843137844733617}
   - component: {fileID: 2689888775725391853}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 2219729259302827526}
   - component: {fileID: 618428898}
   - component: {fileID: 1736375939005029762}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tank Monster
   m_TagString: Tank Monster
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 4539445050092634072}
   - component: {fileID: 5561738244013702845}
   - component: {fileID: 8419082683920197029}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -536,7 +536,7 @@ GameObject:
   - component: {fileID: 4031311285328280101}
   - component: {fileID: 7423949371840301629}
   - component: {fileID: 1482172513684930153}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -610,7 +610,7 @@ GameObject:
   - component: {fileID: 2334843223148656093}
   - component: {fileID: 6863885927454011237}
   - component: {fileID: 7850316407595225968}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -684,7 +684,7 @@ GameObject:
   - component: {fileID: 5024086140106527149}
   - component: {fileID: 4812478816677672389}
   - component: {fileID: 8755688386440776854}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Health Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -818,7 +818,7 @@ GameObject:
   - component: {fileID: 6710895447187854122}
   - component: {fileID: 2769534484874090080}
   - component: {fileID: 7957945250141233581}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -918,7 +918,7 @@ GameObject:
   - component: {fileID: 1264742578505996660}
   - component: {fileID: 696909011905034537}
   - component: {fileID: 3750843502292480326}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Club Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}

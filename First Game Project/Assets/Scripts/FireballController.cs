@@ -17,13 +17,15 @@ public class FireballController : MonoBehaviour
     {
         // Set fireball rigidbody
         fireballRigidbody = GetComponent<Rigidbody>();
-        // Fireball should only collide with the player
-        Physics.IgnoreLayerCollision(0, 7);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Fireball should only collide with the player
+        Physics.IgnoreLayerCollision(0, 9);
+        Physics.IgnoreLayerCollision(0, 10);
         MoveFireball();
         StartCoroutine("DestroyFireball");
     }

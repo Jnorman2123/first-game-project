@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 490584968754710743}
   - component: {fileID: 4831661469567075294}
   - component: {fileID: -7136304817899466789}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tank Monster Club
   m_TagString: Tank Monster Club
   m_Icon: {fileID: 0}
@@ -107,4 +107,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6af578a20a1db647b5fbc40914f1782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
+  playerDamage: 50

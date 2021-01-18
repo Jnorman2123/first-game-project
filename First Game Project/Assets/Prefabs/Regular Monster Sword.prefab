@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 575066731369719119}
   - component: {fileID: 6358826657229535699}
   - component: {fileID: 9083181409750612290}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Regular Monster Sword
   m_TagString: Regular Monster Sword
   m_Icon: {fileID: 0}

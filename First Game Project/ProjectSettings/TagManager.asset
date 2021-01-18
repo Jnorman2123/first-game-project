@@ -14,6 +14,7 @@ TagManager:
   - Undefined
   - Regular Monster Sword
   - Tank Monster Club
+  - Fast Monster Fireball
   layers:
   - Default
   - TransparentFX
@@ -24,8 +25,8 @@ TagManager:
   - 
   - 
   - Player
-  - 
-  - 
+  - Boost
+  - Enemy
   - 
   - 
   - 

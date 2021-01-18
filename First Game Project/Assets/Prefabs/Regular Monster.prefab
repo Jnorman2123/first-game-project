@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2101466080}
   - component: {fileID: 2101466079}
   - component: {fileID: 2101466078}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 8794980025884243199}
   - component: {fileID: 578924607980892188}
   - component: {fileID: 1168485120325590643}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 4081063058941611027}
   - component: {fileID: 333923576}
   - component: {fileID: 5554865341283086656}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Regular Monster
   m_TagString: Regular Monster
   m_Icon: {fileID: 0}
@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 3063129164749030381}
   - component: {fileID: 957208000405569358}
   - component: {fileID: 7004127011952234888}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +424,7 @@ GameObject:
   - component: {fileID: 8825933472675614728}
   - component: {fileID: 2243426913394844223}
   - component: {fileID: 2740686462377214984}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Health Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -558,7 +558,7 @@ GameObject:
   - component: {fileID: 5921922677673704716}
   - component: {fileID: 8292028345822946408}
   - component: {fileID: 5881343937259705924}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -657,7 +657,7 @@ GameObject:
   - component: {fileID: 6509962910672448768}
   - component: {fileID: 3198605852896509616}
   - component: {fileID: 2082220496542766963}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,7 +731,7 @@ GameObject:
   - component: {fileID: 2544755947619741074}
   - component: {fileID: 7837071691498578475}
   - component: {fileID: 7975674715818339039}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
