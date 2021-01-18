@@ -28,8 +28,8 @@ public class SpawnManager : MonoBehaviour
     // Game is started variable
     public bool gameIsStarted;
     // Variable for weapon and weapon controller
-    public GameObject weapon;
-    private WeaponController weaponController;
+    //public GameObject weapon;
+    //private WeaponController weaponController;
     // Variables for game and player cameras and camera mode
     [SerializeField] GameObject gameCamera;
     [SerializeField] GameObject playerCamera;
@@ -44,7 +44,7 @@ public class SpawnManager : MonoBehaviour
         // Set waveNumber to 1 intitially
         /*waveNumber = 1;*/
         // Set weaponController
-        weaponController = weapon.GetComponent<WeaponController>();
+        //weaponController = weapon.GetComponent<WeaponController>();
     }
 
     // Update is called once per frame
@@ -72,7 +72,7 @@ public class SpawnManager : MonoBehaviour
         titleScreen.gameObject.SetActive(false);
         cameraMode = 1;
         StartCoroutine(CameraChange());
-        weaponController.playerDamage = 50;
+        //weaponController.playerDamage = 50;
     }
     // Function to restart the game
     public void RestartGame()
