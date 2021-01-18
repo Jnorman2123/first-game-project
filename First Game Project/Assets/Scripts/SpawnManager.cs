@@ -7,24 +7,24 @@ using TMPro;
 public class SpawnManager : MonoBehaviour
 {
     //Variables for enemy prefabs, boosts, and player
-    public GameObject[] enemyPrefabs;
-    public GameObject[] boosts;
+    //public GameObject[] enemyPrefabs;
+    //public GameObject[] boosts;
     //Variables for random spawn location
-    private Vector3 enemySpawnPos;
-    private Vector3 boostSpawnPos;
+    //private Vector3 enemySpawnPos;
+    //private Vector3 boostSpawnPos;
     // Variables for title screen, victory screen and death screen
     [SerializeField] TextMeshProUGUI titleScreen;
     [SerializeField] TextMeshProUGUI victoryScreen;
     [SerializeField] TextMeshProUGUI deathScreen;
     //Variables for spawn ranges
-    private float zRange = 13.5f;
-    private float xRange = 24.0f;
+    //private float zRange = 13.5f;
+    //private float xRange = 24.0f;
     //Number of monsters variables
-    private GameObject[] regularMonsters;
-    private GameObject[] fastMonsters;
-    private GameObject[] tankMonsters;
-    private int allMonsters;
-    private int waveNumber;
+    //private GameObject[] regularMonsters;
+    //private GameObject[] fastMonsters;
+    //private GameObject[] tankMonsters;
+    //private int allMonsters;
+    //private int waveNumber;
     // Game is started variable
     public bool gameIsStarted;
     // Variable for weapon and weapon controller
@@ -42,7 +42,7 @@ public class SpawnManager : MonoBehaviour
         cameraMode = 0;
         StartCoroutine(CameraChange());
         // Set waveNumber to 1 intitially
-        waveNumber = 1;
+        /*waveNumber = 1;*/
         // Set weaponController
         weaponController = weapon.GetComponent<WeaponController>();
     }
@@ -51,23 +51,23 @@ public class SpawnManager : MonoBehaviour
     void Update()
     {
         //Find all monsters and set the number
-        regularMonsters = GameObject.FindGameObjectsWithTag("Regular Monster");
+        /*regularMonsters = GameObject.FindGameObjectsWithTag("Regular Monster");
         fastMonsters = GameObject.FindGameObjectsWithTag("Fast Monster");
-        tankMonsters = GameObject.FindGameObjectsWithTag("Tank Monster");
-        allMonsters = regularMonsters.Length + fastMonsters.Length + tankMonsters.Length;
+        tankMonsters = GameObject.FindGameObjectsWithTag("Tank Monster");*/
+        //allMonsters = regularMonsters.Length + fastMonsters.Length + tankMonsters.Length;
         // If all monsters are dead spawn the next wave of monsters 
-        if (allMonsters <= 0 && gameIsStarted)
+        /*if (allMonsters <= 0 && gameIsStarted)
         {
             SpawnWave();
-        }
+        }*/
     }
     // Function to begin the game and disable the title screen
     public void StartGame()
     {
         // Set game is started, spawn first wave, increment the wave number
         gameIsStarted = true;
-        NextWave(waveNumber);
-        waveNumber += 1;
+        /*NextWave(waveNumber);
+        waveNumber += 1;*/
         // Deactivate the title screen game camera and activate the player camera
         titleScreen.gameObject.SetActive(false);
         cameraMode = 1;
@@ -80,14 +80,14 @@ public class SpawnManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     // Function to spawn the next wave and cancel previous boost spawn
-    void SpawnWave()
+    /*void SpawnWave()
     {
         CancelInvoke("SpawnBoost");
         NextWave(waveNumber);
         waveNumber += 1;
-    }
+    }*/
     //Function to spawn a monster and a random location
-    private void spawnMonster(int monsterIndex)
+    /*private void spawnMonster(int monsterIndex)
     {
         //Set y spawn pos based on monster size 
         float yPos = 0;
@@ -105,9 +105,9 @@ public class SpawnManager : MonoBehaviour
         enemySpawnPos = new Vector3(Random.Range(xRange, -xRange), yPos, Random.Range(zRange, -zRange));
         //Spawn enemy of given index
         Instantiate(enemyPrefabs[monsterIndex], enemySpawnPos, enemyPrefabs[monsterIndex].transform.rotation);
-    }
+    }*/
     //Function to spawn a wave by number
-    private void NextWave(int wave)
+    /*private void NextWave(int wave)
     {
        switch (wave)
         {
@@ -132,9 +132,9 @@ public class SpawnManager : MonoBehaviour
             default:
                 break;
         }
-    }
+    }*/
     //Function to spawn the wave of monsters
-    private void Wave(int iArg, int nArg, int jArg)
+    /*private void Wave(int iArg, int nArg, int jArg)
     {
         //Spawn regular monsters
         for (int i = 0; i < iArg; i++)
@@ -153,9 +153,9 @@ public class SpawnManager : MonoBehaviour
         }
         //Spawn a random boost every 10 seconds after 5 second delay
         InvokeRepeating("SpawnBoost", 5.0f, 10.0f);
-    }
+    }*/
     //Function to spawn a random boost
-    private void SpawnBoost()
+    /*private void SpawnBoost()
     {
         //Random index to spawn
         int boostIndex = Random.Range(0, boosts.Length);
@@ -164,12 +164,12 @@ public class SpawnManager : MonoBehaviour
         boostSpawnPos = new Vector3(Random.Range(xRange, -xRange), yPos, Random.Range(zRange, -zRange));
         //Spawn boost
         Instantiate(boosts[boostIndex], boostSpawnPos, boosts[boostIndex].transform.rotation);
-    }
+    }*/
     // Function to bring up death screen when player health is zero
     public void Death()
     {
         // Game is started changes to false and spawn boost is stopped
-        CancelInvoke("SpawnBoost");
+        //CancelInvoke("SpawnBoost");
         gameIsStarted = false;
         // Activate the death screen and main camera and deactivate the player camera
         deathScreen.gameObject.SetActive(true);
@@ -181,7 +181,7 @@ public class SpawnManager : MonoBehaviour
     {
         // Game is started changes to false and spawn boost is stopped
         gameIsStarted = false;
-        CancelInvoke("SpawnBoost");
+        //CancelInvoke("SpawnBoost");
         // Activate the victory screen and main camera and deactivate the player camera
         victoryScreen.gameObject.SetActive(true);
         cameraMode = 0;
