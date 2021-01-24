@@ -29,6 +29,8 @@ public class EnemyController : MonoBehaviour
     // Attack range variable and aggro range variable   
     private float aggroRange;
     private float attackRange;
+    // Monster start position
+    private Vector3 startPosition;
     // Each monster weapon hit box variable
     public GameObject regularMonsterSword;
     public GameObject tankMonsterClub;
@@ -50,6 +52,8 @@ public class EnemyController : MonoBehaviour
         player = GameObject.Find("Player");
         // Set spawnManager
         spawnManager = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
+        // Set the monsters start position to its current position
+        startPosition = transform.position;
         // Set attack range based on the type of monster
         if (gameObject.CompareTag("Regular Monster"))
         {
