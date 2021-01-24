@@ -26,7 +26,8 @@ public class EnemyController : MonoBehaviour
     private float regularAttackDelay = 1.0f;
     private float tankAttackDelay = 1.5f;
     private float fastAttackDelay = 2.0f;
-    // Attack range variable
+    // Attack range variable and aggro range variable   
+    private float aggroRange;
     private float attackRange;
     // Each monster weapon hit box variable
     public GameObject regularMonsterSword;
@@ -53,15 +54,18 @@ public class EnemyController : MonoBehaviour
         if (gameObject.CompareTag("Regular Monster"))
         {
             attackRange = 2.0f;
+            aggroRange = 10.0f;
         } else if (gameObject.CompareTag("Tank Monster"))
             // if tank monster set club game object and club attack animation
         {
             attackRange = 2.5f;
+            aggroRange = 12.0f;
             club = transform.GetChild(2).gameObject;
             clubAttack = club.GetComponent<Animation>();
         } else if (gameObject.CompareTag("Fast Monster"))
         {
             attackRange = 8.0f;
+            aggroRange = 16.0f;
         }
     }
 
@@ -72,6 +76,10 @@ public class EnemyController : MonoBehaviour
         if (spawnManager.gameIsStarted)
         {
             // MoveEnemy();
+            if (Vector3.Distance(transform.position, player.transform.position) <= aggroRange)
+            {
+                PursuePlayer();
+            }
         }  
     }
 
