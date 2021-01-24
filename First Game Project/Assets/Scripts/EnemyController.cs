@@ -71,7 +71,7 @@ public class EnemyController : MonoBehaviour
         // Check if the game is started and if so allow enemy to move
         if (spawnManager.gameIsStarted)
         {
-            MoveEnemy();
+            // MoveEnemy();
         }  
     }
 
@@ -92,7 +92,7 @@ public class EnemyController : MonoBehaviour
     }
 
     //Create function to move enemies 
-    void MoveEnemy()
+    void PursuePlayer()
     {
         //Create enemy movement vector3 for direction
         Vector3 enemyMovement = (player.transform.position - transform.position).normalized;
