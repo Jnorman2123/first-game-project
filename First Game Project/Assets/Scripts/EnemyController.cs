@@ -83,6 +83,9 @@ public class EnemyController : MonoBehaviour
             if (Vector3.Distance(transform.position, player.transform.position) <= aggroRange)
             {
                 PursuePlayer();
+            } else
+            {
+                ReturnToStartPos();
             }
         }  
     }
@@ -111,6 +114,17 @@ public class EnemyController : MonoBehaviour
         enemyMovement.y = 0;
         enemyRb.AddForce(enemyMovement * enemySpeed * Time.deltaTime, ForceMode.Impulse);
         //Make enemy face the way they are moving
+        transform.rotation = Quaternion.LookRotation(enemyMovement);
+    }
+
+    // Function to have monster move back to its starting position
+    void ReturnToStartPos()
+    {
+        // Set enemy movement vector to move towards the start position
+        Vector3 enemyMovement = (startPosition - transform.position).normalized;
+        enemyMovement.y = 0;
+        enemyRb.AddForce(enemyMovement * enemySpeed * Time.deltaTime, ForceMode.Impulse);
+        // Make enemy face the direction they are facing
         transform.rotation = Quaternion.LookRotation(enemyMovement);
     }
 
